@@ -28,6 +28,11 @@
   // gap: 40px;
 }
 
+.leftContent {
+  display: flex;
+  flex: 1;
+}
+
 .leftColumn,
 .rightColumn {
   display: flex;
@@ -42,7 +47,7 @@
   align-items: center;
   gap: 38px;
   flex-shrink: 0;
-  height: 100%;
+  // height: 100%;
 }
 
 .locationItem {

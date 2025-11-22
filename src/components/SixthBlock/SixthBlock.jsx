@@ -163,42 +163,45 @@ function SixthBlock() {
       <h2 ref={titleRef} className={styles.geographyTitle}>GEOGRAPHY</h2>
       
       <div className={styles.geographyContent}>
-        <div className={styles.leftColumn}>
-          <div ref={cyprusRef} className={styles.locationItem}>
-            <div className={styles.locationContent}>
-              <div className={styles.locationName}>Cyprus</div>
-              <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} />
+        <div className={styles.leftContent}>
+            <div className={styles.leftColumn}>
+            <div ref={cyprusRef} className={styles.locationItem}>
+              <div className={styles.locationContent}>
+                <div className={styles.locationName}>Cyprus</div>
+                <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} />
+              </div>
+            </div>
+            
+            <div ref={uaeRef} className={styles.locationItem}>
+              <div className={styles.locationContent}>
+                <div className={styles.locationName}>UAE</div>
+                <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} />
+              </div>
             </div>
           </div>
-          
-          <div ref={uaeRef} className={styles.locationItem}>
-            <div className={styles.locationContent}>
-              <div className={styles.locationName}>UAE</div>
-              <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} />
-            </div>
-          </div>
-        </div>
 
-        <div ref={centerRef} className={styles.centerColumn}>
-          <img src={pointSvg} alt="Location point" className={styles.pointIcon} />
-          <div className={styles.ourOffices}>our offices</div>
-        </div>
+          <div ref={centerRef} className={styles.centerColumn}>
+            <img src={pointSvg} alt="Location point" className={styles.pointIcon} />
+            <div className={styles.ourOffices}>our offices</div>
+          </div>
 
-        <div className={styles.rightColumn}>
-          <div ref={hongKongRef} className={styles.locationItem}>
-            <div className={styles.locationContent}>
-              <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} />
-              <div className={styles.locationName}>Hong Kong</div>
+          <div className={styles.rightColumn}>
+            <div ref={hongKongRef} className={styles.locationItem}>
+              <div className={styles.locationContent}>
+                <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} />
+                <div className={styles.locationName}>Hong Kong</div>
+              </div>
             </div>
-          </div>
-          
-          <div ref={chinaRef} className={styles.locationItem}>
-            <div className={styles.locationContent}>
-              <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} />
-              <div className={styles.locationName}>China</div>
+            
+            <div ref={chinaRef} className={styles.locationItem}>
+              <div className={styles.locationContent}>
+                <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} />
+                <div className={styles.locationName}>China</div>
+              </div>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   )
