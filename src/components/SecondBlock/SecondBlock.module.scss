@@ -1,0 +1,70 @@
+.secondBlock {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 1217;
+  background-image: url('../../../assets/png/block2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  padding: 34px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  
+  .firstRow {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .secondRow {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .arrowSvg {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .eSvg {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .aSvg {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .gSvg {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 1440px) {
+  .secondBlock {
+    padding: 25px 52px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .secondBlock {
+    padding: 20px 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .secondBlock {
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .secondBlock {
+    padding: 10px 15px;
+  }
+}
+

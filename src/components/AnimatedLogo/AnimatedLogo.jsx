@@ -1,0 +1,212 @@
+import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { interpolate } from 'flubber'
+import styles from './AnimatedLogo.module.scss'
+
+function AnimatedLogo() {
+  const svgRef = useRef(null)
+  const pathGRef = useRef(null)
+  const pathERef = useRef(null)
+  const pathARef = useRef(null)
+  const pathArrowRef = useRef(null)
+
+  useEffect(() => {
+    if (!svgRef.current || !pathGRef.current || !pathERef.current || !pathARef.current || !pathArrowRef.current) {
+      return
+    }
+
+    // Пути из первого SVG
+    const firstG = "M120.192 81.3996V0.988983H179.449V9.72509H129.326V36.7026H174.085V45.5761H129.326V72.6635H179.449V81.3996H120.192Z"
+    const firstE = "M278.513 81.3721L312.709 0.961517H324.153L358.348 81.3721H348.252L338.403 58.0484H298.513L288.665 81.3721H278.568H278.513ZM302.007 49.6694H334.854L318.431 10.4394L302.007 49.6694Z"
+    const firstA = "M228.197 82.3611C219.999 82.3611 212.984 80.5205 207.097 76.8393C201.21 73.158 196.698 68.1856 193.534 61.9494C190.371 55.7133 188.803 48.7903 188.803 41.1806C188.803 33.5708 190.426 26.6479 193.672 20.4117C196.918 14.1756 201.512 9.20312 207.482 5.52187C213.452 1.84062 220.439 0 228.472 0C237.138 0 244.676 2.11535 251.031 6.37351C257.386 10.6317 262.09 16.1261 265.088 22.8292H255.102C252.681 18.5436 249.298 15.1371 244.951 12.6371C240.604 10.1372 235.35 8.87346 229.188 8.87346C222.695 8.87346 217.111 10.302 212.406 13.1866C207.702 16.0711 204.098 19.9172 201.65 24.7798C199.201 29.6423 197.936 35.1092 197.936 41.1806C197.936 47.2519 199.146 52.6089 201.595 57.5264C204.016 62.4164 207.565 66.3175 212.241 69.202C216.891 72.0866 222.475 73.5151 228.968 73.5151C233.837 73.5151 238.431 72.4712 242.778 70.3559C247.124 68.2405 250.646 65.2186 253.369 61.2351C256.093 57.2792 257.441 52.499 257.441 46.8948H228.005V38.6257H265.831V81.3996H257.441V67.1966C255.735 69.779 253.562 72.2514 250.866 74.5591C248.197 76.8667 244.951 78.7623 241.182 80.2183C237.413 81.6743 233.094 82.4161 228.225 82.4161L228.197 82.3611Z"
+    const firstArrow = "M80.1373 1.1813H71.3615V3.73619L73.9475 1.1813L80.1373 7.33503L77.7714 9.72509H80.1373V81.1798H71.3615V16.0986L6.21731 81.1798L0 74.9712L65.3918 9.72509H0V0.961517H80.1373V1.1813Z"
+
+    // Пути из второго SVG
+    const secondG = "M174.91 300.379L232.434 165.052H251.664L309.187 300.379H292.186L275.597 261.149H208.445L191.856 300.379H174.855H174.91ZM214.442 247.028H269.71L242.062 181.013L214.442 247.028Z"
+    const secondE = "M14.9656 135.327V0H114.663V14.725H30.3438V60.1088H105.667V75.0261H30.3438V120.602H114.663V135.327H14.9656Z"
+    const secondA = "M66.3271 302C52.5445 302 40.7152 298.896 30.8115 292.687C20.9078 286.478 13.3149 278.154 7.97795 267.66C2.66847 257.166 0 245.518 0 232.716C0 219.914 2.72354 208.265 8.19807 197.771C13.6451 187.277 21.4029 178.925 31.4442 172.717C41.4854 166.508 53.2323 163.431 66.7398 163.431C81.3477 163.431 94.0024 167.002 104.704 174.173C115.405 181.343 123.301 190.573 128.335 201.864H111.554C107.455 194.639 101.76 188.925 94.4701 184.694C87.1799 180.464 78.3216 178.348 67.9503 178.348C57.0287 178.348 47.6202 180.766 39.6972 185.601C31.7743 190.436 25.7496 196.947 21.568 205.134C17.414 213.32 15.3232 222.523 15.3232 232.743C15.3232 242.963 17.3864 252.001 21.4579 260.243C25.557 268.484 31.5267 275.022 39.3671 279.858C47.2075 284.693 56.5885 287.11 67.5101 287.11C75.7081 287.11 83.4385 285.324 90.7562 281.781C98.0464 278.237 103.989 273.127 108.583 266.451C113.15 259.775 115.433 251.726 115.433 242.331H65.887V228.43H129.546V300.379H115.405V276.451C112.544 280.819 108.858 284.94 104.346 288.813C99.8346 292.687 94.415 295.874 88.0877 298.319C81.7328 300.764 74.4701 302 66.2721 302H66.3271Z"
+    const secondArrow = "M309.105 0V10.7416V14.725V134.97H294.359V25.4666L184.731 134.915L174.332 124.531L284.291 14.725H174.277V0H309.105Z"
+
+    // Создаем функции интерполяции
+    let morphG, morphE, morphA, morphArrow
+    try {
+      morphG = interpolate(firstG, secondG, { maxSegmentLength: 2 })
+      morphE = interpolate(firstE, secondE, { maxSegmentLength: 2 })
+      morphA = interpolate(firstA, secondA, { maxSegmentLength: 2 })
+      morphArrow = interpolate(firstArrow, secondArrow, { maxSegmentLength: 2 })
+    } catch (error) {
+      console.error('Ошибка создания функций интерполяции:', error)
+      return
+    }
+
+    // Функция прямой анимации (first -> second)
+    const runForwardAnimation = () => {
+      if (!svgRef.current || !pathGRef.current || !pathERef.current || !pathARef.current || !pathArrowRef.current) {
+        return
+      }
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          // После завершения прямой анимации запускаем обратную
+          runReverseAnimation()
+        }
+      })
+
+      // Анимируем viewBox и размеры SVG
+      tl.to(svgRef.current, {
+        attr: { viewBox: '0 0 310 302' },
+        width: 310,
+        height: 302,
+        duration: 1.5,
+        ease: 'power2.inOut'
+      })
+
+      // Последовательный морфинг букв (волна)
+      // Стрелка - первая
+      const progressArrow = { progress: 0 }
+      tl.to(progressArrow, {
+        progress: 1,
+        duration: 1.2,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          pathArrowRef.current.setAttribute('d', morphArrow(progressArrow.progress))
+        }
+      }, 0)
+
+      // G - вторая (задержка 0.3 сек)
+      const progressG = { progress: 0 }
+      tl.to(progressG, {
+        progress: 1,
+        duration: 1.2,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          pathGRef.current.setAttribute('d', morphG(progressG.progress))
+        }
+      }, 0.3)
+
+      // A - третья (задержка 0.6 сек)
+      const progressA = { progress: 0 }
+      tl.to(progressA, {
+        progress: 1,
+        duration: 1.2,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          pathARef.current.setAttribute('d', morphA(progressA.progress))
+        }
+      }, 0.6)
+
+      // E - четвертая (задержка 0.9 сек)
+      const progressE = { progress: 0 }
+      tl.to(progressE, {
+        progress: 1,
+        duration: 1.2,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          pathERef.current.setAttribute('d', morphE(progressE.progress))
+        }
+      }, 0.9)
+    }
+
+    // Функция обратной анимации (second -> first)
+    const runReverseAnimation = () => {
+      if (!svgRef.current || !pathGRef.current || !pathERef.current || !pathARef.current || !pathArrowRef.current) {
+        return
+      }
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          // После завершения обратной анимации ждем 2 секунды и запускаем цикл снова
+          setTimeout(() => {
+            runForwardAnimation()
+          }, 2000)
+        }
+      })
+
+      // Анимируем viewBox и размеры SVG обратно
+      tl.to(svgRef.current, {
+        attr: { viewBox: '0 0 359 83' },
+        width: 359,
+        height: 83,
+        duration: 1,
+        ease: 'power2.inOut'
+      })
+
+      // Обратный последовательный морфинг букв (волна в обратную сторону)
+      // Стрелка - первая
+      const progressArrow = { progress: 1 }
+      tl.to(progressArrow, {
+        progress: 0,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          pathArrowRef.current.setAttribute('d', morphArrow(progressArrow.progress))
+        }
+      }, 0)
+
+      // G - вторая (задержка 0.2 сек)
+      const progressG = { progress: 1 }
+      tl.to(progressG, {
+        progress: 0,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          pathGRef.current.setAttribute('d', morphG(progressG.progress))
+        }
+      }, 0.2)
+
+      // A - третья (задержка 0.4 сек)
+      const progressA = { progress: 1 }
+      tl.to(progressA, {
+        progress: 0,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          pathARef.current.setAttribute('d', morphA(progressA.progress))
+        }
+      }, 0.4)
+
+      // E - четвертая (задержка 0.6 сек)
+      const progressE = { progress: 1 }
+      tl.to(progressE, {
+        progress: 0,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          pathERef.current.setAttribute('d', morphE(progressE.progress))
+        }
+      }, 0.6)
+    }
+
+    // Начальная задержка 1 секунда, затем запускаем прямую анимацию
+    const initialTimer = setTimeout(() => {
+      runForwardAnimation()
+    }, 1000)
+
+    return () => {
+      clearTimeout(initialTimer)
+      // Останавливаем все GSAP анимации при размонтировании
+      gsap.killTweensOf([svgRef.current, pathGRef.current, pathERef.current, pathARef.current, pathArrowRef.current])
+    }
+  }, [])
+
+  return (
+    <div className={styles.logoContainer}>
+      <svg 
+        ref={svgRef}
+        width="359" 
+        height="83" 
+        viewBox="0 0 359 83" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+        className={styles.svg}
+      >
+        <path ref={pathGRef} d="M120.192 81.3996V0.988983H179.449V9.72509H129.326V36.7026H174.085V45.5761H129.326V72.6635H179.449V81.3996H120.192Z" fill="#010101"/>
+        <path ref={pathERef} d="M278.513 81.3721L312.709 0.961517H324.153L358.348 81.3721H348.252L338.403 58.0484H298.513L288.665 81.3721H278.568H278.513ZM302.007 49.6694H334.854L318.431 10.4394L302.007 49.6694Z" fill="#010101"/>
+        <path ref={pathARef} d="M228.197 82.3611C219.999 82.3611 212.984 80.5205 207.097 76.8393C201.21 73.158 196.698 68.1856 193.534 61.9494C190.371 55.7133 188.803 48.7903 188.803 41.1806C188.803 33.5708 190.426 26.6479 193.672 20.4117C196.918 14.1756 201.512 9.20312 207.482 5.52187C213.452 1.84062 220.439 0 228.472 0C237.138 0 244.676 2.11535 251.031 6.37351C257.386 10.6317 262.09 16.1261 265.088 22.8292H255.102C252.681 18.5436 249.298 15.1371 244.951 12.6371C240.604 10.1372 235.35 8.87346 229.188 8.87346C222.695 8.87346 217.111 10.302 212.406 13.1866C207.702 16.0711 204.098 19.9172 201.65 24.7798C199.201 29.6423 197.936 35.1092 197.936 41.1806C197.936 47.2519 199.146 52.6089 201.595 57.5264C204.016 62.4164 207.565 66.3175 212.241 69.202C216.891 72.0866 222.475 73.5151 228.968 73.5151C233.837 73.5151 238.431 72.4712 242.778 70.3559C247.124 68.2405 250.646 65.2186 253.369 61.2351C256.093 57.2792 257.441 52.499 257.441 46.8948H228.005V38.6257H265.831V81.3996H257.441V67.1966C255.735 69.779 253.562 72.2514 250.866 74.5591C248.197 76.8667 244.951 78.7623 241.182 80.2183C237.413 81.6743 233.094 82.4161 228.225 82.4161L228.197 82.3611Z" fill="#010101"/>
+        <path ref={pathArrowRef} d="M80.1373 1.1813H71.3615V3.73619L73.9475 1.1813L80.1373 7.33503L77.7714 9.72509H80.1373V81.1798H71.3615V16.0986L6.21731 81.1798L0 74.9712L65.3918 9.72509H0V0.961517H80.1373V1.1813Z" fill="#010101"/>
+      </svg>
+    </div>
+  )
+}
+
+export default AnimatedLogo

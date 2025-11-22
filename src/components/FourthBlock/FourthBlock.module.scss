@@ -1,0 +1,66 @@
+.fourthBlock {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1923 / 968;
+  padding: 70px 70px 150px 70px;
+  background: white;
+  z-index: 10;
+  
+  .valuesTitle {
+    font-family: Questrial;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 52px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: rgba(15, 15, 16, 1);
+    display: inline-block;
+    
+    .char {
+      display: inline-block;
+      transform-origin: center;
+    }
+  }
+
+  .valuesContent {
+    display: flex;
+    flex-direction: column;
+    gap: 81px;
+    margin-top: 135px;
+    
+    .row {
+      display: flex;
+      gap: 74px;
+      
+      .rowText {
+        font-family: Questrial;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 77px;
+        line-height: 100%;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: rgba(15, 15, 16, 1);
+        display: inline-block;
+        
+        .char {
+          display: inline-block;
+        }
+      }
+    }
+
+    .rowStart {
+      justify-content: flex-start;
+    }
+
+    .rowCenter {
+      justify-content: center;
+    }
+
+    .rowEnd {
+      justify-content: flex-end;
+    }
+  }
+}
+
