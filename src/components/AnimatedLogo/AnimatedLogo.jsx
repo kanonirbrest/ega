@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { interpolate } from 'flubber'
+import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin'
 import styles from './AnimatedLogo.module.scss'
+
+gsap.registerPlugin(MorphSVGPlugin)
 
 function AnimatedLogo() {
   const svgRef = useRef(null)
@@ -27,18 +29,6 @@ function AnimatedLogo() {
     const secondA = "M66.3271 302C52.5445 302 40.7152 298.896 30.8115 292.687C20.9078 286.478 13.3149 278.154 7.97795 267.66C2.66847 257.166 0 245.518 0 232.716C0 219.914 2.72354 208.265 8.19807 197.771C13.6451 187.277 21.4029 178.925 31.4442 172.717C41.4854 166.508 53.2323 163.431 66.7398 163.431C81.3477 163.431 94.0024 167.002 104.704 174.173C115.405 181.343 123.301 190.573 128.335 201.864H111.554C107.455 194.639 101.76 188.925 94.4701 184.694C87.1799 180.464 78.3216 178.348 67.9503 178.348C57.0287 178.348 47.6202 180.766 39.6972 185.601C31.7743 190.436 25.7496 196.947 21.568 205.134C17.414 213.32 15.3232 222.523 15.3232 232.743C15.3232 242.963 17.3864 252.001 21.4579 260.243C25.557 268.484 31.5267 275.022 39.3671 279.858C47.2075 284.693 56.5885 287.11 67.5101 287.11C75.7081 287.11 83.4385 285.324 90.7562 281.781C98.0464 278.237 103.989 273.127 108.583 266.451C113.15 259.775 115.433 251.726 115.433 242.331H65.887V228.43H129.546V300.379H115.405V276.451C112.544 280.819 108.858 284.94 104.346 288.813C99.8346 292.687 94.415 295.874 88.0877 298.319C81.7328 300.764 74.4701 302 66.2721 302H66.3271Z"
     const secondArrow = "M309.105 0V10.7416V14.725V134.97H294.359V25.4666L184.731 134.915L174.332 124.531L284.291 14.725H174.277V0H309.105Z"
 
-    // Создаем функции интерполяции
-    let morphG, morphE, morphA, morphArrow
-    try {
-      morphG = interpolate(firstG, secondG, { maxSegmentLength: 2 })
-      morphE = interpolate(firstE, secondE, { maxSegmentLength: 2 })
-      morphA = interpolate(firstA, secondA, { maxSegmentLength: 2 })
-      morphArrow = interpolate(firstArrow, secondArrow, { maxSegmentLength: 2 })
-    } catch (error) {
-      console.error('Ошибка создания функций интерполяции:', error)
-      return
-    }
-
     // Функция прямой анимации (first -> second)
     const runForwardAnimation = () => {
       if (!svgRef.current || !pathGRef.current || !pathERef.current || !pathARef.current || !pathArrowRef.current) {
@@ -61,49 +51,33 @@ function AnimatedLogo() {
         ease: 'power2.inOut'
       })
 
-      // Последовательный морфинг букв (волна)
+      // Последовательный морфинг букв (волна) с MorphSVGPlugin
       // Стрелка - первая
-      const progressArrow = { progress: 0 }
-      tl.to(progressArrow, {
-        progress: 1,
+      tl.to(pathArrowRef.current, {
+        morphSVG: secondArrow,
         duration: 1.2,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          pathArrowRef.current.setAttribute('d', morphArrow(progressArrow.progress))
-        }
+        ease: 'power2.inOut'
       }, 0)
 
       // G - вторая (задержка 0.3 сек)
-      const progressG = { progress: 0 }
-      tl.to(progressG, {
-        progress: 1,
+      tl.to(pathGRef.current, {
+        morphSVG: secondG,
         duration: 1.2,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          pathGRef.current.setAttribute('d', morphG(progressG.progress))
-        }
+        ease: 'power2.inOut'
       }, 0.3)
 
       // A - третья (задержка 0.6 сек)
-      const progressA = { progress: 0 }
-      tl.to(progressA, {
-        progress: 1,
+      tl.to(pathARef.current, {
+        morphSVG: secondA,
         duration: 1.2,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          pathARef.current.setAttribute('d', morphA(progressA.progress))
-        }
+        ease: 'power2.inOut'
       }, 0.6)
 
       // E - четвертая (задержка 0.9 сек)
-      const progressE = { progress: 0 }
-      tl.to(progressE, {
-        progress: 1,
+      tl.to(pathERef.current, {
+        morphSVG: secondE,
         duration: 1.2,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          pathERef.current.setAttribute('d', morphE(progressE.progress))
-        }
+        ease: 'power2.inOut'
       }, 0.9)
     }
 
@@ -133,47 +107,31 @@ function AnimatedLogo() {
 
       // Обратный последовательный морфинг букв (волна в обратную сторону)
       // Стрелка - первая
-      const progressArrow = { progress: 1 }
-      tl.to(progressArrow, {
-        progress: 0,
+      tl.to(pathArrowRef.current, {
+        morphSVG: firstArrow,
         duration: 0.8,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          pathArrowRef.current.setAttribute('d', morphArrow(progressArrow.progress))
-        }
+        ease: 'power2.inOut'
       }, 0)
 
       // G - вторая (задержка 0.2 сек)
-      const progressG = { progress: 1 }
-      tl.to(progressG, {
-        progress: 0,
+      tl.to(pathGRef.current, {
+        morphSVG: firstG,
         duration: 0.8,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          pathGRef.current.setAttribute('d', morphG(progressG.progress))
-        }
+        ease: 'power2.inOut'
       }, 0.2)
 
       // A - третья (задержка 0.4 сек)
-      const progressA = { progress: 1 }
-      tl.to(progressA, {
-        progress: 0,
+      tl.to(pathARef.current, {
+        morphSVG: firstA,
         duration: 0.8,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          pathARef.current.setAttribute('d', morphA(progressA.progress))
-        }
+        ease: 'power2.inOut'
       }, 0.4)
 
       // E - четвертая (задержка 0.6 сек)
-      const progressE = { progress: 1 }
-      tl.to(progressE, {
-        progress: 0,
+      tl.to(pathERef.current, {
+        morphSVG: firstE,
         duration: 0.8,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          pathERef.current.setAttribute('d', morphE(progressE.progress))
-        }
+        ease: 'power2.inOut'
       }, 0.6)
     }
 
