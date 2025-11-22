@@ -177,3 +177,103 @@
     }
   }
 }
+
+// Large Desktop
+@media (min-width: 1441px) and (max-width: 1800px) {
+  .fifthBlock .servicesList .serviceItem .serviceHeader .serviceTitle {
+    font-size: 70px !important;
+    line-height: 82px !important;
+  }
+  
+  .fifthBlock .servicesList .serviceItem.serviceItemActive .serviceHeader .serviceTitle {
+    font-size: 108px !important;
+    line-height: 130px !important;
+  }
+  
+  .fifthBlock .servicesList .serviceItem .serviceItems li.serviceItemText {
+    font-size: 58px !important;
+    line-height: 90px !important;
+  }
+}
+
+// Desktop
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .fifthBlock .servicesList .serviceItem .serviceHeader .serviceTitle {
+    font-size: 45px !important; // 70px - 5px
+    line-height: 57px !important; // 82px - 5px
+  }
+  
+  .fifthBlock .servicesList .serviceItem.serviceItemActive .serviceHeader .serviceTitle {
+    font-size: 63px !important; // 108px - 5px
+    line-height: 85px !important; // 130px - 5px
+  }
+  
+  .fifthBlock .servicesList .serviceItem .serviceItems li.serviceItemText {
+    font-size: 43px !important; // 58px - 5px
+    line-height: 65px !important; // 90px - 5px
+  }
+  .fifthBlock .servicesList .serviceItem .serviceHeader {
+    gap: 60px !important;
+  }
+}
+
+// Small Desktop
+@media (min-width: 769px) and (max-width: 1024px) {
+  .fifthBlock .servicesList .serviceItem .serviceHeader {
+    gap: 50px !important;
+  }
+  
+  .fifthBlock .servicesList .serviceItem .serviceHeader .serviceTitle {
+    font-size: 40px !important; // 70px - 10px
+    line-height: 42px !important; // 82px - 10px
+  }
+  
+  .fifthBlock .servicesList .serviceItem.serviceItemActive .serviceHeader .serviceTitle {
+    font-size: 59px !important; // 108px - 10px
+    line-height: 60px !important; // 130px - 10px
+  }
+  
+  .fifthBlock .servicesList .serviceItem .serviceItems li.serviceItemText {
+    font-size: 38px !important; // 58px - 10px
+    line-height: 50px !important; // 90px - 10px
+  }
+}
+
+// Tablet
+@media (min-width: 481px) and (max-width: 768px) {
+  .fifthBlock .servicesList .serviceItem .serviceHeader {
+    gap: 40px !important;
+  }
+  .fifthBlock .servicesList .serviceItem .serviceHeader .serviceTitle {
+    font-size: 25px !important; // 70px - 15px
+    line-height: 35px !important; // 82px - 15px
+  }
+  
+  .fifthBlock .servicesList .serviceItem.serviceItemActive .serviceHeader .serviceTitle {
+    font-size: 33px !important; // 108px - 15px
+    line-height: 50px !important; // 130px - 15px
+  }
+  
+  .fifthBlock .servicesList .serviceItem .serviceItems li.serviceItemText {
+    font-size: 25px !important; // 58px - 15px
+    line-height: 35px !important; // 90px - 15px
+  }
+}
+
+// Mobile
+@media (max-width: 480px) {
+  .fifthBlock .servicesList .serviceItem .serviceHeader .serviceTitle {
+    font-size: 50px !important; // 70px - 20px
+    line-height: 62px !important; // 82px - 20px
+  }
+  
+  .fifthBlock .servicesList .serviceItem.serviceItemActive .serviceHeader .serviceTitle {
+    font-size: 88px !important; // 108px - 20px
+    line-height: 110px !important; // 130px - 20px
+  }
+  
+  .fifthBlock .servicesList .serviceItem .serviceItems li.serviceItemText {
+    font-size: 38px !important; // 58px - 20px
+    line-height: 70px !important; // 90px - 20px
+  }
+}
