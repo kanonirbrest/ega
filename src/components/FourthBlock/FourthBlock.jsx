@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './FourthBlock.module.scss'
@@ -18,7 +18,7 @@ const splitText = (text) => {
   })
 }
 
-const FourthBlock = forwardRef((props, ref) => {
+function FourthBlock() {
   const titleRef = useRef(null)
   const row1Ref = useRef(null)
   const row2Ref = useRef(null)
@@ -200,7 +200,7 @@ const FourthBlock = forwardRef((props, ref) => {
   }, [])
 
   return (
-    <div ref={ref} className={styles.fourthBlock}>
+    <div className={styles.fourthBlock}>
       <div ref={blockRef}>
         <h2 ref={titleRef} className={styles.valuesTitle}>{splitText('Values')}</h2>
         <div className={styles.valuesContent}>
@@ -230,9 +230,7 @@ const FourthBlock = forwardRef((props, ref) => {
       </div>
     </div>
   )
-})
-
-FourthBlock.displayName = 'FourthBlock'
+}
 
 export default FourthBlock
 
