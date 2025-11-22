@@ -63,7 +63,9 @@ function FifthBlock() {
     }
   ]
 
-  const toggleItem = (id) => {
+  const toggleItem = (id, e) => {
+    e.preventDefault()
+    e.stopPropagation()
     setExpandedItem(expandedItem === id ? null : id)
   }
 
@@ -97,7 +99,7 @@ function FifthBlock() {
       }
 
       // Анимация для заголовков сервисов
-      titleRefs.current.forEach((titleEl, index) => {
+      titleRefs.current.forEach((titleEl) => {
         if (titleEl) {
           const chars = titleEl.querySelectorAll(`.${styles.char}`)
           gsap.fromTo(chars,
@@ -128,6 +130,7 @@ function FifthBlock() {
     }
   }, [])
 
+
   return (
     <div ref={blockRef} id="services" className={styles.fifthBlock}>
       <h2 ref={titleRef} className={styles.servicesTitle}>{splitText('SERVICES')}</h2>
@@ -136,7 +139,7 @@ function FifthBlock() {
           <div key={service.id} className={`${styles.serviceItem} ${expandedItem === service.id ? styles.serviceItemActive : ''}`}>
             <div 
               className={`${styles.serviceHeader} ${expandedItem !== service.id ? styles.serviceHeaderInactive : ''}`}
-              onClick={() => toggleItem(service.id)}
+              onClick={(e) => toggleItem(service.id, e)}
             >
               <span className={styles.number}>0{service.id}</span>
               <h3 
@@ -151,10 +154,12 @@ function FifthBlock() {
                 className={`${styles.arrowRight} ${expandedItem === service.id ? styles.arrowDown : ''}`} 
               />
             </div>
-            {expandedItem === service.id && service.items && (
-              <ul className={styles.serviceItems}>
-                {service.items.map((item, index) => (
-                  <li key={index} className={styles.serviceItemText}>{item}</li>
+            {service.items && (
+              <ul 
+                className={`${styles.serviceItems} ${expandedItem === service.id ? styles.serviceItemsOpen : ''}`}
+              >
+                {service.items.map((item, itemIndex) => (
+                  <li key={itemIndex} className={styles.serviceItemText}>{item}</li>
                 ))}
               </ul>
             )}

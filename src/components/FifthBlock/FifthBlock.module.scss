@@ -52,6 +52,8 @@
   margin-bottom: 0;
   position: relative;
   margin-top: -45px;
+  scroll-margin: 0;
+  scroll-padding: 0;
 
 
   &.serviceItemActive {
@@ -151,6 +153,31 @@
   padding: 0;
   margin: 0px 0 0 180px;
   padding-left: 20px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  scroll-margin: 0;
+  scroll-padding: 0;
+  
+  &.serviceItemsOpen {
+    max-height: 2000px;
+    opacity: 1;
+    
+    .serviceItemText {
+      opacity: 1;
+      transform: translateY(0);
+      
+      &:nth-child(1) { transition-delay: 0.08s; }
+      &:nth-child(2) { transition-delay: 0.16s; }
+      &:nth-child(3) { transition-delay: 0.24s; }
+      &:nth-child(4) { transition-delay: 0.32s; }
+      &:nth-child(5) { transition-delay: 0.40s; }
+      &:nth-child(6) { transition-delay: 0.48s; }
+      &:nth-child(7) { transition-delay: 0.56s; }
+      &:nth-child(8) { transition-delay: 0.64s; }
+    }
+  }
   
   .serviceItemText {
     font-family: 'Questrial', sans-serif;
@@ -163,6 +190,9 @@
     margin-bottom: 0;
     position: relative;
     padding-left: 60.99px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
     
     &::before {
       content: '';
