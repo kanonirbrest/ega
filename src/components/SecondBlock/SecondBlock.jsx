@@ -14,7 +14,7 @@ function SecondBlock() {
   const gRef = useRef(null)
 
   useEffect(() => {
-    const elements = [arrowRef.current, eRef.current, aRef.current, gRef.current].filter(Boolean)
+    const elements = [eRef.current, arrowRef.current, gRef.current, aRef.current].filter(Boolean)
     
     if (elements.length === 0 || !blockRef.current) return
 
@@ -88,12 +88,12 @@ function SecondBlock() {
   return (
     <div ref={blockRef} className={styles.secondBlock}>
       <div className={styles.firstRow}>
-        <img ref={arrowRef} src={arrowSvg} alt="Arrow" className={styles.arrowSvg} />
         <img ref={eRef} src={eSvg} alt="E" className={styles.eSvg} />
+        <img ref={arrowRef} src={arrowSvg} alt="Arrow" className={styles.arrowSvg} />
       </div>
       <div className={styles.secondRow}>
-        <img ref={aRef} src={aSvg} alt="A" className={styles.aSvg} />
         <img ref={gRef} src={gSvg} alt="G" className={styles.gSvg} />
+        <img ref={aRef} src={aSvg} alt="A" className={styles.aSvg} />
       </div>
     </div>
   )

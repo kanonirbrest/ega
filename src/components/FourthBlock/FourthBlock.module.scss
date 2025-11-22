@@ -62,5 +62,147 @@
       justify-content: flex-end;
     }
   }
+
+  .planetSvg {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    transform-origin: center center;
+  }
+}
+
+// Large Desktop
+@media (min-width: 1441px) {
+  .fourthBlock .valuesContent .row.rowStart .rowText,
+  .fourthBlock .valuesContent .row.rowCenter .rowText,
+  .fourthBlock .valuesContent .row.rowEnd .rowText {
+    font-size: 77px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
+  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
+  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
+    transform: scale(1) !important;
+  }
+}
+
+// Desktop
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .fourthBlock {
+    padding: 60px 60px 130px 60px !important;
+  }
+  
+  .fourthBlock .valuesContent {
+    gap: 69px !important;
+    margin-top: 115px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart,
+  .fourthBlock .valuesContent .row.rowCenter,
+  .fourthBlock .valuesContent .row.rowEnd {
+    gap: 63px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart .rowText,
+  .fourthBlock .valuesContent .row.rowCenter .rowText,
+  .fourthBlock .valuesContent .row.rowEnd .rowText {
+    font-size: 67px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
+  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
+  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
+    transform: scale(0.9) !important;
+  }
+}
+
+// Small Desktop
+@media (min-width: 769px) and (max-width: 1024px) {
+  .fourthBlock {
+    padding: 50px 50px 110px 50px !important;
+  }
+  
+  .fourthBlock .valuesContent {
+    gap: 57px !important;
+    margin-top: 95px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart,
+  .fourthBlock .valuesContent .row.rowCenter,
+  .fourthBlock .valuesContent .row.rowEnd {
+    gap: 52px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart .rowText,
+  .fourthBlock .valuesContent .row.rowCenter .rowText,
+  .fourthBlock .valuesContent .row.rowEnd .rowText {
+    font-size: 57px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
+  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
+  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
+    transform: scale(0.8) !important;
+  }
+}
+
+// Tablet
+@media (min-width: 481px) and (max-width: 768px) {
+  .fourthBlock {
+    padding: 40px 40px 90px 40px !important;
+  }
+  
+  .fourthBlock .valuesContent {
+    gap: 45px !important;
+    margin-top: 74px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart,
+  .fourthBlock .valuesContent .row.rowCenter,
+  .fourthBlock .valuesContent .row.rowEnd {
+    gap: 41px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart .rowText,
+  .fourthBlock .valuesContent .row.rowCenter .rowText,
+  .fourthBlock .valuesContent .row.rowEnd .rowText {
+    font-size: 47px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
+  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
+  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
+    transform: scale(0.7) !important;
+  }
+}
+
+// Mobile
+@media (max-width: 480px) {
+  .fourthBlock {
+    padding: 30px 30px 70px 30px !important;
+  }
+  
+  .fourthBlock .valuesContent {
+    gap: 32px !important;
+    margin-top: 54px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart,
+  .fourthBlock .valuesContent .row.rowCenter,
+  .fourthBlock .valuesContent .row.rowEnd {
+    gap: 30px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart .rowText,
+  .fourthBlock .valuesContent .row.rowCenter .rowText,
+  .fourthBlock .valuesContent .row.rowEnd .rowText {
+    font-size: 27px !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
+  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
+  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
+    transform: scale(0.5) !important;
+  }
 }
 

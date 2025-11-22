@@ -26,45 +26,131 @@
   .arrowSvg {
     margin-top: 0;
     margin-left: 0;
+    height: auto;
+    width: 141px; // Базовый размер стрелки
+    transform-origin: center center;
   }
 
   .eSvg {
     margin-top: 0;
     margin-left: 0;
-  }
-
-  .aSvg {
-    margin-top: 0;
-    margin-left: 0;
+    height: auto;
+    width: 103.56px; // Базовый размер E
+    transform-origin: center center;
   }
 
   .gSvg {
     margin-top: 0;
     margin-left: 0;
+    height: auto;
+    width: 135px; // Базовый размер G
+    transform-origin: center center;
+  }
+
+  .aSvg {
+    margin-top: 0;
+    margin-left: 0;
+    height: auto;
+    width: 140px; // Базовый размер A
+    transform-origin: center center;
   }
 }
 
-@media (max-width: 1440px) {
+// Large Desktop
+@media (min-width: 1441px) {
+  .secondBlock {
+    .arrowSvg {
+      width: 141px;
+    }
+    .eSvg {
+      width: 103.56px;
+    }
+    .gSvg {
+      width: 135px;
+    }
+    .aSvg {
+      width: 140px;
+    }
+  }
+}
+
+// Desktop
+@media (min-width: 1025px) and (max-width: 1440px) {
   .secondBlock {
     padding: 25px 52px;
+    
+    .arrowSvg {
+      width: 121px; // 141px - 20px
+    }
+    .eSvg {
+      width: 83.56px; // 103.56px - 20px
+    }
+    .gSvg {
+      width: 115px; // 135px - 20px
+    }
+    .aSvg {
+      width: 120px; // 140px - 20px
+    }
   }
 }
 
-@media (max-width: 1024px) {
+// Small Desktop
+@media (min-width: 769px) and (max-width: 1024px) {
   .secondBlock {
     padding: 20px 35px;
+    
+    .arrowSvg {
+      width: 101px; // 141px - 40px
+    }
+    .eSvg {
+      width: 63.56px; // 103.56px - 40px
+    }
+    .gSvg {
+      width: 95px; // 135px - 40px
+    }
+    .aSvg {
+      width: 100px; // 140px - 40px
+    }
   }
 }
 
-@media (max-width: 768px) {
+// Tablet
+@media (min-width: 481px) and (max-width: 768px) {
   .secondBlock {
     padding: 14px 20px;
+    
+    .arrowSvg {
+      width: 81px; // 141px - 60px
+    }
+    .eSvg {
+      width: 43.56px; // 103.56px - 60px
+    }
+    .gSvg {
+      width: 75px; // 135px - 60px
+    }
+    .aSvg {
+      width: 80px; // 140px - 60px
+    }
   }
 }
 
+// Mobile
 @media (max-width: 480px) {
   .secondBlock {
     padding: 10px 15px;
+    
+    .arrowSvg {
+      width: 61px; // 141px - 80px
+    }
+    .eSvg {
+      width: 23.56px; // 103.56px - 80px
+    }
+    .gSvg {
+      width: 55px; // 135px - 80px
+    }
+    .aSvg {
+      width: 60px; // 140px - 80px
+    }
   }
 }
 

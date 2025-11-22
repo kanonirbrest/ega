@@ -20,3 +20,17 @@ body {
   width: 100%;
   min-height: 100vh;
 }
+
+/* Анимация мигания красных точек в SVG */
+.redDot {
+  animation: blinkRedDot 1.5s ease-in-out infinite;
+}
+
+@keyframes blinkRedDot {
+  0%, 100% {
+    fill: #9A2720;
+  }
+  50% {
+    fill: #FFFFFF;
+  }
+}

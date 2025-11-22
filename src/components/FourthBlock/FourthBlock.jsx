@@ -24,6 +24,9 @@ const FourthBlock = forwardRef((props, ref) => {
   const row2Ref = useRef(null)
   const row3Ref = useRef(null)
   const blockRef = useRef(null)
+  const planetIconRef = useRef(null)
+  const arrowsIconRef = useRef(null)
+  const menuIconRef = useRef(null)
 
   useEffect(() => {
     if (!blockRef.current) return
@@ -77,6 +80,28 @@ const FourthBlock = forwardRef((props, ref) => {
         )
       }
 
+      // Анимация для иконки планеты
+      if (planetIconRef.current) {
+        gsap.fromTo(planetIconRef.current,
+          {
+            opacity: 0,
+            y: 30
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: row1Ref.current,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          }
+        )
+      }
+
       // Анимация для второй строки
       if (row2Ref.current) {
         const chars = row2Ref.current.querySelectorAll(`.${styles.char}`)
@@ -90,6 +115,28 @@ const FourthBlock = forwardRef((props, ref) => {
             y: 0,
             duration: 0.6,
             stagger: 0.02,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: row2Ref.current,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          }
+        )
+      }
+
+      // Анимация для иконки стрелок
+      if (arrowsIconRef.current) {
+        gsap.fromTo(arrowsIconRef.current,
+          {
+            opacity: 0,
+            y: 30
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: row2Ref.current,
@@ -122,6 +169,28 @@ const FourthBlock = forwardRef((props, ref) => {
           }
         )
       }
+
+      // Анимация для иконки меню
+      if (menuIconRef.current) {
+        gsap.fromTo(menuIconRef.current,
+          {
+            opacity: 0,
+            y: 30
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: row3Ref.current,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          }
+        )
+      }
     }, 100)
 
     return () => {
@@ -141,7 +210,7 @@ const FourthBlock = forwardRef((props, ref) => {
               <br/>
               {splitText('globalization')}
             </p>
-            <img src={planetSvg} alt="Planet" className={styles.planetSvg} />
+            <img ref={planetIconRef} src={planetSvg} alt="Planet" className={styles.planetSvg} />
           </div>
           <div className={`${styles.row} ${styles.rowCenter}`}>
             <p ref={row2Ref} className={styles.rowText}>
@@ -149,13 +218,13 @@ const FourthBlock = forwardRef((props, ref) => {
               <br/>
               {splitText('support')}
             </p>
-            <img src={arrowsSvg} alt="Arrows" className={styles.planetSvg} />
+            <img ref={arrowsIconRef} src={arrowsSvg} alt="Arrows" className={styles.planetSvg} />
           </div>
           <div className={`${styles.row} ${styles.rowEnd}`}>
             <p ref={row3Ref} className={styles.rowText}>
               {splitText('confidentiality')}
             </p>
-            <img src={menuSvg} alt="Menu" className={styles.planetSvg} />
+            <img ref={menuIconRef} src={menuSvg} alt="Menu" className={styles.planetSvg} />
           </div>
         </div>
       </div>

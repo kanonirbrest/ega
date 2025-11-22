@@ -12,6 +12,14 @@
 .step7Icon {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
