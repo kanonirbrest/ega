@@ -102,3 +102,99 @@
   padding: 0 100px;
 }
 
+// Desktop
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .locationContent .locationName {
+    font-size: 40px !important; // 48px - 8px
+    margin-bottom: 52px !important;
+  }
+  
+  .arrowLeft,
+  .arrowRight {
+    width: 60px !important; // 68px - 8px
+    height: 63px !important; // 71px - 8px
+  }
+  
+  .ourOffices {
+    font-size: 50px !important; // 60px - 10px
+    padding: 0 70px !important; // 100px - 15px
+  }
+  
+  .pointIcon {
+    width: 142px !important; // 157px - 15px
+    height: 216px !important; // 231px - 15px
+  }
+}
+
+// Small Desktop
+@media (min-width: 769px) and (max-width: 1024px) {
+  .locationContent .locationName {
+    font-size: 32px !important; // 48px - 16px
+    margin-bottom: 62px !important;
+  }
+  
+  .arrowLeft,
+  .arrowRight {
+    width: 32px !important; // 68px - 16px
+    height: 35px !important; // 71px - 16px
+  }
+  
+  .ourOffices {
+    font-size: 35px !important; // 60px - 20px
+    padding: 0 50px !important; // 100px - 30px
+  }
+  
+  .pointIcon {
+    width: 107px !important; // 157px - 30px
+    height: 181px !important; // 231px - 30px
+  }
+}
+
+// Tablet
+@media (min-width: 481px) and (max-width: 768px) {
+  .locationContent .locationName {
+    font-size: 24px !important; // 48px - 24px
+    margin-bottom: 42px !important;
+  }
+  
+  .arrowLeft,
+  .arrowRight {
+    width: 44px !important; // 68px - 24px
+    height: 47px !important; // 71px - 24px
+  }
+  
+  .ourOffices {
+    font-size: 30px !important; // 60px - 30px
+    padding: 0 55px !important; // 100px - 45px
+  }
+  
+  .pointIcon {
+    width: 112px !important; // 157px - 45px
+    height: 186px !important; // 231px - 45px
+  }
+}
+
+// Mobile
+@media (max-width: 480px) {
+  .locationContent .locationName {
+    font-size: 16px !important; // 48px - 32px
+    margin-bottom: 32px !important;
+  }
+  
+  .arrowLeft,
+  .arrowRight {
+    width: 36px !important; // 68px - 32px
+    height: 39px !important; // 71px - 32px
+  }
+  
+  .ourOffices {
+    font-size: 20px !important; // 60px - 40px
+    padding: 0 40px !important; // 100px - 60px
+  }
+  
+  .pointIcon {
+    width: 97px !important; // 157px - 60px
+    height: 171px !important; // 231px - 60px
+  }
+}
+
