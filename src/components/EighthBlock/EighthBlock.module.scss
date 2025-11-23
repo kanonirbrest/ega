@@ -187,7 +187,7 @@
 // Mobile
 @media (max-width: 480px) {
   .eighthBlock {
-    padding-top: 30px !important; // 150px - 90px
+    padding: 30px 15px !important; // 150px - 90px сверху, 15px по бокам
   }
   
   .title {

@@ -183,7 +183,7 @@
 // Mobile
 @media (max-width: 768px) {
   .sixthBlock {
-    padding: 20px !important;
+    padding: 20px 15px !important;
   }
   
   .locationContent .locationName {
@@ -211,6 +211,7 @@
     height: 85.5px !important; // 171px / 2
   }
   .geographyTitle {
+    font-size: 20px !important;
     margin-bottom: 30px;
   }
 }
