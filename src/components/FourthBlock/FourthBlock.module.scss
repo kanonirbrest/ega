@@ -178,6 +178,10 @@
 
 // Mobile
 @media (max-width: 480px) {
+  .valuesTitle {
+    font-size: 20px !important;
+  }
+
   .fourthBlock {
     padding: 30px 30px 70px 30px !important;
   }
@@ -190,19 +194,24 @@
   .fourthBlock .valuesContent .row.rowStart,
   .fourthBlock .valuesContent .row.rowCenter,
   .fourthBlock .valuesContent .row.rowEnd {
-    gap: 30px !important;
+    gap: 15px !important;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
   }
   
   .fourthBlock .valuesContent .row.rowStart .rowText,
   .fourthBlock .valuesContent .row.rowCenter .rowText,
   .fourthBlock .valuesContent .row.rowEnd .rowText {
-    font-size: 27px !important;
+    font-size: 25px !important;
+    align-items: center;
   }
   
   .fourthBlock .valuesContent .row.rowStart img.planetSvg,
   .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
   .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
-    transform: scale(0.5) !important;
+    width: 40px;
+    height: 40px;
   }
 }
 

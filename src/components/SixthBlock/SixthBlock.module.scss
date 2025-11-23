@@ -31,6 +31,7 @@
 .leftContent {
   display: flex;
   flex: 1;
+  align-items: center;
 }
 
 .leftColumn,
@@ -156,50 +157,61 @@
 }
 
 // Tablet
-@media (min-width: 481px) and (max-width: 768px) {
-  .locationContent .locationName {
-    font-size: 24px !important; // 48px - 24px
-    margin-bottom: 42px !important;
-  }
+// @media (min-width: 481px) and (max-width: 768px) {
+//   .locationContent .locationName {
+//     font-size: 24px !important; // 48px - 24px
+//     margin-bottom: 42px !important;
+//   }
   
-  .arrowLeft,
-  .arrowRight {
-    width: 44px !important; // 68px - 24px
-    height: 47px !important; // 71px - 24px
-  }
+//   .arrowLeft,
+//   .arrowRight {
+//     width: 44px !important; // 68px - 24px
+//     height: 47px !important; // 71px - 24px
+//   }
   
-  .ourOffices {
-    font-size: 30px !important; // 60px - 30px
-    padding: 0 55px !important; // 100px - 45px
-  }
+//   .ourOffices {
+//     font-size: 30px !important; // 60px - 30px
+//     padding: 0 55px !important; // 100px - 45px
+//   }
   
-  .pointIcon {
-    width: 112px !important; // 157px - 45px
-    height: 186px !important; // 231px - 45px
-  }
-}
+//   .pointIcon {
+//     width: 112px !important; // 157px - 45px
+//     height: 186px !important; // 231px - 45px
+//   }
+// }
 
 // Mobile
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .sixthBlock {
+    padding: 20px !important;
+  }
+  
   .locationContent .locationName {
     font-size: 16px !important; // 48px - 32px
-    margin-bottom: 32px !important;
+    margin: 30px 0 !important;
   }
   
   .arrowLeft,
   .arrowRight {
-    width: 36px !important; // 68px - 32px
-    height: 39px !important; // 71px - 32px
+    width: 18px !important; // 36px / 2
+    height: 19.5px !important; // 39px / 2
   }
   
   .ourOffices {
     font-size: 20px !important; // 60px - 40px
-    padding: 0 40px !important; // 100px - 60px
+    padding: 0 10px !important; // 100px - 60px
+  }
+  
+  .centerColumn {
+    gap: 10px !important;
   }
   
   .pointIcon {
-    width: 97px !important; // 157px - 60px
-    height: 171px !important; // 231px - 60px
+    width: 48.5px !important; // 97px / 2
+    height: 85.5px !important; // 171px / 2
+  }
+  .geographyTitle {
+    margin-bottom: 30px;
   }
 }
 

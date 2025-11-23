@@ -117,19 +117,19 @@
 // Tablet
 @media (min-width: 481px) and (max-width: 768px) {
   .secondBlock {
-    padding: 14px 20px;
+    padding: 12px 18px;
     
     .arrowSvg {
-      width: 81px; // 141px - 60px
+      width: 70px; // Уменьшено для планшетов
     }
     .eSvg {
-      width: 43.56px; // 103.56px - 60px
+      width: 52px; // Увеличено для читаемости
     }
     .gSvg {
-      width: 75px; // 135px - 60px
+      width: 65px; // Уменьшено для планшетов
     }
     .aSvg {
-      width: 80px; // 140px - 60px
+      width: 68px; // Уменьшено для планшетов
     }
   }
 }
@@ -137,19 +137,20 @@
 // Mobile
 @media (max-width: 480px) {
   .secondBlock {
-    padding: 10px 15px;
+    padding: 8px 12px;
+    aspect-ratio: 1920/2217;
     
     .arrowSvg {
-      width: 61px; // 141px - 80px
+      width: 45px; // Уменьшено для мобильных
     }
     .eSvg {
-      width: 23.56px; // 103.56px - 80px
+      width: 33px; // Увеличено для читаемости
     }
     .gSvg {
-      width: 55px; // 135px - 80px
+      width: 40px; // Уменьшено для мобильных
     }
     .aSvg {
-      width: 60px; // 140px - 80px
+      width: 44px; // Уменьшено для мобильных
     }
   }
 }
