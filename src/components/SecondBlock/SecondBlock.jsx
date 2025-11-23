@@ -18,6 +18,13 @@ function SecondBlock() {
     
     if (elements.length === 0 || !blockRef.current) return
 
+    // Устанавливаем начальную прозрачность
+    elements.forEach(el => {
+      if (el) {
+        gsap.set(el, { opacity: 0 })
+      }
+    })
+
     let hasAnimated = false
 
     // Функция запуска анимации
@@ -46,10 +53,15 @@ function SecondBlock() {
             const offsetX = centerX - finalX - finalRect.width / 2
             const offsetY = centerY - finalY - finalRect.height / 2
             
-            // Анимируем от центра к финальной позиции
-            tl.from(el, {
+            // Анимируем от центра к финальной позиции с изменением opacity
+            tl.fromTo(el, {
               x: offsetX,
               y: offsetY,
+              opacity: 0
+            }, {
+              x: 0,
+              y: 0,
+              opacity: 1,
               duration: 2.5,
               ease: 'power2.out'
             }, index * 0.15)
