@@ -32,7 +32,7 @@ function SeventhBlock() {
                   scale: 0.8
                 },
                 {
-                  scale: 1.3,
+                  scale: 1.15,
                   ease: "none",
                   scrollTrigger: {
                     trigger: blockRef.current,
