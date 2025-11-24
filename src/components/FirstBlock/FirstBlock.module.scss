@@ -149,21 +149,22 @@
         // height: 20px;
         aspect-ratio: 383/123;
         margin-right: 0;
-        order: 2; // Логотип будет снизу
+        order: 1; // Логотип будет сверху
       }
 
       .navMenu {
         width: 100%;
         flex-direction: column;
         gap: 15px;
-        order: 1; // Меню будет сверху
+        order: 2; // Меню будет снизу
+        align-items: flex-end;
       }
 
       .navLink {
         font-size: 18px;
         font-weight: 600;
         line-height: 24px;
-        text-align: center;
+        text-align: right;
       }
     }
   }
