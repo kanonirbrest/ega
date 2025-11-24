@@ -99,7 +99,8 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .secondBlock {
     padding: 20px 35px;
-    
+    height: 50vh;
+
     .arrowSvg {
       width: 101px; // 141px - 40px
     }
@@ -119,6 +120,7 @@
 @media (min-width: 481px) and (max-width: 768px) {
   .secondBlock {
     padding: 12px 18px;
+    height: 50vh;
     
     .arrowSvg {
       width: 70px; // Уменьшено для планшетов
@@ -138,8 +140,9 @@
 // Mobile
 @media (max-width: 480px) {
   .secondBlock {
-    padding: 8px 15px;
-    aspect-ratio: 1920/2217;
+    padding: 20px;
+    height: 50vh;
+    // aspect-ratio: 1920/2217;
     
     .arrowSvg {
       width: 45px; // Уменьшено для мобильных

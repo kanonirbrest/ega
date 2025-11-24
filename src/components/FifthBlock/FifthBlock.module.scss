@@ -307,13 +307,17 @@
   }
   
   .fifthBlock .servicesList .serviceItem .serviceHeader {
-    padding: 20px 0 15px 0 !important; // Убираем левый padding
+    padding: 20px 0 15px 10px !important; // Убираем левый padding
     gap: 20px !important;
   }
   
   .fifthBlock .servicesList .serviceItem .serviceHeader .arrowRight {
     width: 25.5px !important; // 51px / 2
     height: 26.5px !important; // 53px / 2
+  }
+  
+  .fifthBlock .servicesList .serviceItem .serviceHeader .number {
+    font-size: 20px !important; // 40px / 2
   }
   
   .fifthBlock .servicesList .serviceItem .serviceHeader .serviceTitle {
@@ -340,7 +344,9 @@
     width: 100% !important;
     
     &::before {
-      left: 5px !important;
+      width: 6px;
+      height: 6px;
+      left: 9px !important;
     }
   }
 }

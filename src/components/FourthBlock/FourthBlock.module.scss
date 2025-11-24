@@ -69,6 +69,21 @@
     max-width: 100%;
     transform-origin: center center;
   }
+
+  .arrowsSvg {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    transform-origin: center center;
+  }
+
+  .oneArrowSvg {
+    display: none;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    transform-origin: center center;
+  }
 }
 
 // Large Desktop
@@ -83,6 +98,14 @@
   .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
   .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
     transform: scale(1) !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowCenter .arrowsSvg {
+    display: block !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowCenter .oneArrowSvg {
+    display: none !important;
   }
 }
 
@@ -210,6 +233,16 @@
   .fourthBlock .valuesContent .row.rowStart img.planetSvg,
   .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
   .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .fourthBlock .valuesContent .row.rowCenter .arrowsSvg {
+    display: none !important;
+  }
+  
+  .fourthBlock .valuesContent .row.rowCenter .oneArrowSvg {
+    display: block !important;
     width: 40px;
     height: 40px;
   }

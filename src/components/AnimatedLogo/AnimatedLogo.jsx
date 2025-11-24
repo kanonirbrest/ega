@@ -251,9 +251,9 @@ function AnimatedLogo() {
     <div className={styles.logoContainer}>
       <svg 
         ref={svgRef}
-        width="383.52" 
+        width="518.98" 
         height="123.7" 
-        viewBox="0 0 383.52 123.7" 
+        viewBox="0 0 518.98 123.7" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
         className={styles.svg}

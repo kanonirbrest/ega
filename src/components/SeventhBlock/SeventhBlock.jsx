@@ -10,7 +10,6 @@ function SeventhBlock() {
   const svgRef = useRef(null)
   const blockRef = useRef(null)
   const titleRef = useRef(null)
-  const listRef = useRef(null)
 
   useEffect(() => {
     if (!blockRef.current) return
@@ -18,27 +17,6 @@ function SeventhBlock() {
     // Анимация для заголовка
     if (titleRef.current) {
       gsap.fromTo(titleRef.current,
-        {
-          opacity: 0,
-          y: 30
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: blockRef.current,
-            start: "top 80%",
-            toggleActions: "play reverse play reverse"
-          }
-        }
-      )
-    }
-
-    // Анимация для списка юрисдикций
-    if (listRef.current) {
-      gsap.fromTo(listRef.current,
         {
           opacity: 0,
           y: 30
@@ -105,7 +83,7 @@ function SeventhBlock() {
     <div ref={blockRef} className={styles.seventhBlock}>
       <h2 ref={titleRef} className={styles.title}>Jurisdictions we are providing services:</h2>
       <div ref={svgRef} className={styles.step7Icon}></div>
-      <div ref={listRef} className={styles.jurisdictionsList}>
+      <div className={styles.jurisdictionsList}>
         Brazil, Cayman Islands, BVI, Costa Rica, Switzerland,<br/>
         United Kingdom, Serbia, Armenia, Kazakhstan, Cyprus, UAE,<br/>
         Hong Kong, China, Seychelles Islands, Marshal Islands.

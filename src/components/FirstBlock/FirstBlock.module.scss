@@ -31,7 +31,7 @@
     .smallLogo {
       width: 368px;
       height: 46px;
-      aspect-ratio: 368/30;
+      aspect-ratio: 383/123;
       opacity: 1;
       margin-right: 20px;
     }
@@ -146,8 +146,8 @@
       gap: 15px;
 
       .smallLogo {
-        height: 20px;
-        aspect-ratio: 736/92;
+        // height: 20px;
+        aspect-ratio: 383/123;
         margin-right: 0;
         order: 2; // Логотип будет снизу
       }

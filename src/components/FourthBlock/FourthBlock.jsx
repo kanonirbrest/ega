@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './FourthBlock.module.scss'
 import planetSvg from '../../../assets/svg/planet.svg'
 import arrowsSvg from '../../../assets/svg/arrows.svg'
+import oneArrowSvg from '../../../assets/svg/oneArrow.svg'
 import menuSvg from '../../../assets/svg/menu.svg'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -26,6 +27,7 @@ function FourthBlock() {
   const blockRef = useRef(null)
   const planetIconRef = useRef(null)
   const arrowsIconRef = useRef(null)
+  const oneArrowIconRef = useRef(null)
   const menuIconRef = useRef(null)
 
   useEffect(() => {
@@ -147,6 +149,28 @@ function FourthBlock() {
         )
       }
 
+      // Анимация для иконки одной стрелки
+      if (oneArrowIconRef.current) {
+        gsap.fromTo(oneArrowIconRef.current,
+          {
+            opacity: 0,
+            y: 30
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: row2Ref.current,
+              start: "top 85%",
+              toggleActions: "play reverse play reverse"
+            }
+          }
+        )
+      }
+
       // Анимация для третьей строки
       if (row3Ref.current) {
         const chars = row3Ref.current.querySelectorAll(`.${styles.char}`)
@@ -218,7 +242,8 @@ function FourthBlock() {
               <br/>
               {splitText('support')}
             </p>
-            <img ref={arrowsIconRef} src={arrowsSvg} alt="Arrows" className={styles.planetSvg} />
+            <img ref={arrowsIconRef} src={arrowsSvg} alt="Arrows" className={styles.arrowsSvg} />
+            <img ref={oneArrowIconRef} src={oneArrowSvg} alt="One Arrow" className={styles.oneArrowSvg} />
           </div>
           <div className={`${styles.row} ${styles.rowEnd}`}>
             <p ref={row3Ref} className={styles.rowText}>
