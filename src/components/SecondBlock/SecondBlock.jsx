@@ -5,6 +5,7 @@ import arrowSvg from '../../../assets/svg/arrow.svg'
 import eSvg from '../../../assets/svg/e.svg'
 import aSvg from '../../../assets/svg/a.svg'
 import gSvg from '../../../assets/svg/g.svg'
+import block2Image from '../../../assets/png/block2.png'
 
 function SecondBlock() {
   const blockRef = useRef(null)
@@ -98,7 +99,11 @@ function SecondBlock() {
   }, [])
 
   return (
-    <div ref={blockRef} className={styles.secondBlock}>
+    <div 
+      ref={blockRef} 
+      className={styles.secondBlock}
+      style={{ backgroundImage: `url(${block2Image})` }}
+    >
       <div className={styles.firstRow}>
         <img ref={eRef} src={eSvg} alt="E" className={styles.eSvg} />
         <img ref={arrowRef} src={arrowSvg} alt="Arrow" className={styles.arrowSvg} />
