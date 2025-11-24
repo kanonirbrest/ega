@@ -29,8 +29,8 @@
     align-items: center;
 
     .smallLogo {
-      width: 368px;
-      height: 46px;
+      width: 515.2px; // 368px * 1.4
+      height: 64.4px; // 46px * 1.4
       aspect-ratio: 383/123;
       opacity: 1;
       margin-right: 20px;
@@ -49,8 +49,8 @@
       font-family: 'Questrial', sans-serif;
       font-style: normal;
       font-weight: 400;
-      font-size: 24px;
-      line-height: 25px;
+      font-size: 34px;
+      line-height: 35px;
       color: #000000;
       text-decoration: none;
       text-transform: uppercase;
@@ -68,8 +68,8 @@
 
     .smallLogoContainer {
       .smallLogo {
-        width: 276px;
-        height: 35px;
+        width: 386.4px; // 276px * 1.4
+        height: 49px; // 35px * 1.4
         margin-right: 15px;
       }
 
@@ -92,8 +92,8 @@
 
     .smallLogoContainer {
       .smallLogo {
-        width: 221px;
-        height: 28px;
+        width: 309.4px; // 221px * 1.4
+        height: 39.2px; // 28px * 1.4
         margin-right: 12px;
       }
 
