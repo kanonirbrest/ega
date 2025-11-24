@@ -71,6 +71,10 @@
     line-height: 18px !important;
     margin-top: 20px !important;
     text-align: left !important;
+    
+    br {
+      display: none !important;
+    }
   }
 }
 
