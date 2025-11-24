@@ -33,6 +33,9 @@ function FourthBlock() {
   useEffect(() => {
     if (!blockRef.current) return
 
+    // Определяем мобильное устройство
+    const isMobile = window.innerWidth <= 480
+
     const timer = setTimeout(() => {
       // Анимация для заголовка
       if (titleRef.current) {
@@ -40,20 +43,21 @@ function FourthBlock() {
         gsap.fromTo(chars, 
           {
             opacity: 0,
-            y: 50,
-            rotationX: -90
+            y: isMobile ? 30 : 50,
+            ...(isMobile ? {} : { rotationX: -90 })
           },
           {
             opacity: 1,
             y: 0,
-            rotationX: 0,
-            duration: 0.8,
-            stagger: 0.03,
-            ease: "back.out(1.7)",
+            ...(isMobile ? {} : { rotationX: 0 }),
+            duration: isMobile ? 0.6 : 0.8,
+            stagger: isMobile ? 0.05 : 0.03,
+            ease: isMobile ? "power2.out" : "back.out(1.7)",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -65,18 +69,19 @@ function FourthBlock() {
         gsap.fromTo(chars,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            stagger: 0.02,
+            duration: isMobile ? 0.5 : 0.6,
+            stagger: isMobile ? 0.05 : 0.02,
             ease: "power2.out",
             scrollTrigger: {
               trigger: row1Ref.current,
               start: "top 85%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -87,18 +92,19 @@ function FourthBlock() {
         gsap.fromTo(planetIconRef.current,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            delay: 0.8,
+            duration: isMobile ? 0.5 : 0.6,
+            delay: isMobile ? 0.3 : 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: row1Ref.current,
               start: "top 85%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -110,18 +116,19 @@ function FourthBlock() {
         gsap.fromTo(chars,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            stagger: 0.02,
+            duration: isMobile ? 0.5 : 0.6,
+            stagger: isMobile ? 0.05 : 0.02,
             ease: "power2.out",
             scrollTrigger: {
               trigger: row2Ref.current,
               start: "top 85%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -132,18 +139,19 @@ function FourthBlock() {
         gsap.fromTo(arrowsIconRef.current,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            delay: 0.8,
+            duration: isMobile ? 0.5 : 0.6,
+            delay: isMobile ? 0.3 : 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: row2Ref.current,
               start: "top 85%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -154,18 +162,19 @@ function FourthBlock() {
         gsap.fromTo(oneArrowIconRef.current,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            delay: 0.8,
+            duration: isMobile ? 0.5 : 0.6,
+            delay: isMobile ? 0.3 : 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: row2Ref.current,
               start: "top 85%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -177,18 +186,19 @@ function FourthBlock() {
         gsap.fromTo(chars,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            stagger: 0.02,
+            duration: isMobile ? 0.5 : 0.6,
+            stagger: isMobile ? 0.05 : 0.02,
             ease: "power2.out",
             scrollTrigger: {
               trigger: row3Ref.current,
               start: "top 85%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -199,18 +209,19 @@ function FourthBlock() {
         gsap.fromTo(menuIconRef.current,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            delay: 0.8,
+            duration: isMobile ? 0.5 : 0.6,
+            delay: isMobile ? 0.3 : 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: row3Ref.current,
               start: "top 85%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )

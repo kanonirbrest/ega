@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import styles from './FirstBlock.module.scss'
 import smallLogo from '../../../assets/png/small-logo.png'
 import AnimatedLogo from '../AnimatedLogo/AnimatedLogo'

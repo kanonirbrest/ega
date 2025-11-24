@@ -15,40 +15,55 @@ function EighthBlock() {
   useEffect(() => {
     if (!blockRef.current || !titleRef.current || !buttonRef.current || !logoRef.current) return
 
+    // Определяем мобильное устройство
+    const isMobile = window.innerWidth <= 480
+
     // Устанавливаем начальное состояние
-    gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
-      filter: "blur(10px)",
-      opacity: 0
-    })
-    gsap.set([buttonRef.current, logoRef.current], {
-      y: 50
-    })
+    if (isMobile) {
+      // На мобильных убираем blur для производительности
+      gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
+        opacity: 0
+      })
+      gsap.set([buttonRef.current, logoRef.current], {
+        y: 30
+      })
+    } else {
+      gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
+        filter: "blur(10px)",
+        opacity: 0
+      })
+      gsap.set([buttonRef.current, logoRef.current], {
+        y: 50
+      })
+    }
 
     // Анимация для заголовка
     const titleAnimation = gsap.to(titleRef.current, {
-      filter: "blur(0px)",
+      ...(isMobile ? {} : { filter: "blur(0px)" }),
       opacity: 1,
-      duration: 1.5,
+      duration: isMobile ? 0.8 : 1.5,
       ease: "power2.out",
       scrollTrigger: {
         trigger: blockRef.current,
         start: "top 80%",
-        toggleActions: "play reverse play reverse"
+        toggleActions: "play reverse play reverse",
+        ...(isMobile ? { markers: false } : {})
       }
     })
 
     // Анимация для кнопки и логотипа
     const elementsAnimation = gsap.to([buttonRef.current, logoRef.current], {
-      filter: "blur(0px)",
+      ...(isMobile ? {} : { filter: "blur(0px)" }),
       opacity: 1,
       y: 0,
-      duration: 1.5,
-      stagger: 0.2,
+      duration: isMobile ? 0.8 : 1.5,
+      stagger: isMobile ? 0.1 : 0.2,
       ease: "power2.out",
       scrollTrigger: {
         trigger: blockRef.current,
         start: "top 80%",
-        toggleActions: "play reverse play reverse"
+        toggleActions: "play reverse play reverse",
+        ...(isMobile ? { markers: false } : {})
       }
     })
 

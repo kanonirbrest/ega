@@ -14,22 +14,26 @@ function SeventhBlock() {
   useEffect(() => {
     if (!blockRef.current) return
 
+    // Определяем мобильное устройство
+    const isMobile = window.innerWidth <= 480
+
     // Анимация для заголовка
     if (titleRef.current) {
       gsap.fromTo(titleRef.current,
         {
           opacity: 0,
-          y: 30
+          y: isMobile ? 20 : 30
         },
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
+          duration: isMobile ? 0.8 : 1.5,
           ease: "power2.out",
           scrollTrigger: {
             trigger: blockRef.current,
             start: "top 80%",
-            toggleActions: "play reverse play reverse"
+            toggleActions: "play reverse play reverse",
+            ...(isMobile ? { markers: false } : {})
           }
         }
       )
@@ -62,7 +66,7 @@ function SeventhBlock() {
                     trigger: blockRef.current,
                     start: "top bottom",
                     end: "bottom top",
-                    scrub: 1
+                    scrub: isMobile ? 2 : 1
                   }
                 }
               )

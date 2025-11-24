@@ -61,22 +61,26 @@ function FifthBlock() {
   useEffect(() => {
     if (!blockRef.current) return
 
+    // Определяем мобильное устройство
+    const isMobile = window.innerWidth <= 480
+
     // Анимация для заголовка "SERVICES"
     if (titleRef.current) {
       gsap.fromTo(titleRef.current,
         {
           opacity: 0,
-          y: 50
+          y: isMobile ? 30 : 50
         },
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
+          duration: isMobile ? 0.8 : 1.5,
           ease: "power2.out",
           scrollTrigger: {
             trigger: blockRef.current,
             start: "top 80%",
-            toggleActions: "play reverse play reverse"
+            toggleActions: "play reverse play reverse",
+            ...(isMobile ? { markers: false } : {})
           }
         }
       )
@@ -88,17 +92,18 @@ function FifthBlock() {
         gsap.fromTo(titleEl,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 1.5,
+            duration: isMobile ? 0.8 : 1.5,
             ease: "power2.out",
             scrollTrigger: {
               trigger: titleEl,
               start: "top 85%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )

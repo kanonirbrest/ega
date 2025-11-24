@@ -20,23 +20,27 @@ function SixthBlock() {
   useEffect(() => {
     if (!blockRef.current) return
 
+    // Определяем мобильное устройство
+    const isMobile = window.innerWidth <= 480
+
     const timer = setTimeout(() => {
       // Анимация для заголовка
       if (titleRef.current) {
         gsap.fromTo(titleRef.current,
           {
             opacity: 0,
-            y: 30
+            y: isMobile ? 20 : 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: isMobile ? 0.6 : 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -47,17 +51,18 @@ function SixthBlock() {
         gsap.fromTo(cyprusRef.current,
           {
             opacity: 0,
-            x: -50
+            x: isMobile ? -30 : -50
           },
           {
             opacity: 1,
             x: 0,
-            duration: 0.6,
+            duration: isMobile ? 0.5 : 0.6,
             ease: "power2.out",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -73,13 +78,14 @@ function SixthBlock() {
           {
             opacity: 1,
             scale: 1,
-            duration: 0.6,
-            delay: 0.2,
+            duration: isMobile ? 0.5 : 0.6,
+            delay: isMobile ? 0.1 : 0.2,
             ease: "power2.out",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -90,18 +96,19 @@ function SixthBlock() {
         gsap.fromTo(hongKongRef.current,
           {
             opacity: 0,
-            x: 50
+            x: isMobile ? 30 : 50
           },
           {
             opacity: 1,
             x: 0,
-            duration: 0.6,
-            delay: 0.4,
+            duration: isMobile ? 0.5 : 0.6,
+            delay: isMobile ? 0.2 : 0.4,
             ease: "power2.out",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -112,18 +119,19 @@ function SixthBlock() {
         gsap.fromTo(uaeRef.current,
           {
             opacity: 0,
-            x: -50
+            x: isMobile ? -30 : -50
           },
           {
             opacity: 1,
             x: 0,
-            duration: 0.6,
-            delay: 0.6,
+            duration: isMobile ? 0.5 : 0.6,
+            delay: isMobile ? 0.3 : 0.6,
             ease: "power2.out",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )
@@ -134,18 +142,19 @@ function SixthBlock() {
         gsap.fromTo(chinaRef.current,
           {
             opacity: 0,
-            x: 50
+            x: isMobile ? 30 : 50
           },
           {
             opacity: 1,
             x: 0,
-            duration: 0.6,
-            delay: 0.8,
+            duration: isMobile ? 0.5 : 0.6,
+            delay: isMobile ? 0.4 : 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse"
+              toggleActions: "play reverse play reverse",
+              ...(isMobile ? { markers: false } : {})
             }
           }
         )

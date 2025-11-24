@@ -24,6 +24,7 @@
     margin-left: 70px;
     margin-top: 73px;
     margin-bottom: 119px;
+    will-change: transform, opacity, filter;
   }
 
   .leadText {
@@ -36,10 +37,12 @@
     color: #FFFFFF;
     white-space: pre;
     margin-left: 57px;
+    will-change: transform, opacity, filter;
   }
 
   .leadLine {
     white-space: pre;
+    will-change: transform, opacity, filter;
   }
 }
 

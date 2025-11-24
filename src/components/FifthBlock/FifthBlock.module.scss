@@ -23,6 +23,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
+  will-change: transform, opacity;
 }
 
 .servicesList {
@@ -122,6 +123,7 @@
   font-weight: 400;
   font-size: 80px;
   line-height: 82px;
+  will-change: transform, opacity;
   color: #000000;
   text-transform: uppercase;
   margin: 0;

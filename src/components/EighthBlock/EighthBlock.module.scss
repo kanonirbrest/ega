@@ -41,6 +41,7 @@
   color: #818284;
   margin: 0 0 47px 0;
   padding: 0;
+  will-change: transform, opacity, filter;
 }
 
 .writeUsButton {
@@ -60,6 +61,7 @@
   color: #818284;
   cursor: pointer;
   transition: all 0.3s ease;
+  will-change: transform, opacity, filter;
   
   &:hover {
     opacity: 0.7;
@@ -73,6 +75,7 @@
   position: relative;
   width: 100%;
   justify-content: center;
+  will-change: transform, opacity, filter;
 }
 
 .logoText {
