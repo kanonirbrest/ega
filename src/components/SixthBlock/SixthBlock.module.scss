@@ -72,7 +72,7 @@
   font-family: 'Questrial', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 65px;
   line-height: 1.2;
   color: #FFFFFF;
   text-transform: uppercase;
@@ -111,7 +111,7 @@
 // Desktop
 @media (min-width: 1025px) and (max-width: 1440px) {
   .locationContent .locationName {
-    font-size: 40px !important; // 48px - 8px
+    font-size: 50px !important; // 48px - 8px
     margin-bottom: 52px !important;
   }
   
@@ -135,7 +135,7 @@
 // Small Desktop
 @media (min-width: 769px) and (max-width: 1024px) {
   .locationContent .locationName {
-    font-size: 32px !important; // 48px - 16px
+    font-size: 42px !important; // 48px - 16px
     margin-bottom: 62px !important;
   }
   
@@ -187,7 +187,7 @@
   }
   
   .locationContent .locationName {
-    font-size: 16px !important; // 48px - 32px
+    font-size: 26px !important; // 48px - 32px
     margin: 30px 0 !important;
   }
   
