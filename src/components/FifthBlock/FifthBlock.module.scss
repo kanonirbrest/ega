@@ -1,7 +1,7 @@
 .fifthBlock {
   position: relative;
   width: 100%;
-  aspect-ratio: 1923 / 1696;
+  // aspect-ratio: 1923 / 1696;
   background: #EFF1F4;
   padding: 70px 70px 140px 70px;
   display: flex;
@@ -20,11 +20,9 @@
   margin: 0 0 193px 0;
   padding: 0;
   display: inline-block;
-  
-  .char {
-    display: inline-block;
-    transform-origin: center;
-  }
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .servicesList {
@@ -131,10 +129,9 @@
   flex: 1;
   min-width: 0;
   display: inline-block;
-  
-  .char {
-    display: inline-block;
-  }
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .arrowRight {
@@ -194,6 +191,9 @@
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
     
     &::before {
       content: '';

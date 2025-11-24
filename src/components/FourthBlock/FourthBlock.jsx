@@ -51,7 +51,7 @@ function FourthBlock() {
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play none none none"
+              toggleActions: "play reverse play reverse"
             }
           }
         )
@@ -74,7 +74,7 @@ function FourthBlock() {
             scrollTrigger: {
               trigger: row1Ref.current,
               start: "top 85%",
-              toggleActions: "play none none none"
+              toggleActions: "play reverse play reverse"
             }
           }
         )
@@ -96,7 +96,7 @@ function FourthBlock() {
             scrollTrigger: {
               trigger: row1Ref.current,
               start: "top 85%",
-              toggleActions: "play none none none"
+              toggleActions: "play reverse play reverse"
             }
           }
         )
@@ -119,7 +119,7 @@ function FourthBlock() {
             scrollTrigger: {
               trigger: row2Ref.current,
               start: "top 85%",
-              toggleActions: "play none none none"
+              toggleActions: "play reverse play reverse"
             }
           }
         )
@@ -141,7 +141,7 @@ function FourthBlock() {
             scrollTrigger: {
               trigger: row2Ref.current,
               start: "top 85%",
-              toggleActions: "play none none none"
+              toggleActions: "play reverse play reverse"
             }
           }
         )
@@ -164,7 +164,7 @@ function FourthBlock() {
             scrollTrigger: {
               trigger: row3Ref.current,
               start: "top 85%",
-              toggleActions: "play none none none"
+              toggleActions: "play reverse play reverse"
             }
           }
         )
@@ -186,7 +186,7 @@ function FourthBlock() {
             scrollTrigger: {
               trigger: row3Ref.current,
               start: "top 85%",
-              toggleActions: "play none none none"
+              toggleActions: "play reverse play reverse"
             }
           }
         )

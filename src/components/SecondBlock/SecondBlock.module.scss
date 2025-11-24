@@ -1,13 +1,14 @@
 .secondBlock {
   position: relative;
   width: 100%;
-  aspect-ratio: 1920 / 1217;
+  height: 98vh;
+  // aspect-ratio: 1920 / 1617;
   background-image: url('../../../assets/png/block2.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 1;
-  padding: 34px 70px;
+  padding: 70px 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
