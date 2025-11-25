@@ -197,6 +197,9 @@
     font-size: 20px !important; // 52px - 32px
     line-height: 27px !important; // 59px - 32px
     margin-bottom: 15px !important; // 47px - 32px
+    opacity: 1 !important; // Гарантируем видимость на мобильном
+    filter: blur(0px) !important; // Убираем blur на мобильном
+    transform: translateY(0) !important; // Убираем смещение на мобильном
   }
   
   .writeUsButton {
@@ -204,6 +207,15 @@
     padding: 8px 18px !important; // 34px 65px - 22px 37px
     margin-bottom: 26px !important; // 100px - 64px
     border-radius: 40px !important; // 80px - 40px
+    opacity: 1 !important; // Гарантируем видимость на мобильном
+    filter: blur(0px) !important; // Убираем blur на мобильном
+    transform: translateY(0) !important; // Убираем смещение на мобильном
+  }
+  
+  .logoContainer {
+    opacity: 1 !important; // Гарантируем видимость на мобильном
+    filter: blur(0px) !important; // Убираем blur на мобильном
+    transform: translateY(0) !important; // Убираем смещение на мобильном
   }
   
   .logoText {

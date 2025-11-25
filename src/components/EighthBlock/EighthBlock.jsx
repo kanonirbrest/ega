@@ -20,7 +20,22 @@ function EighthBlock() {
 
     // На мобильном полностью отключаем все анимации и не используем GSAP
     if (isMobile) {
-      // Элементы остаются видимыми без использования GSAP (не потребляют ресурсы)
+      // Явно устанавливаем видимость элементов через inline стили, чтобы переопределить любые возможные стили от GSAP
+      if (titleRef.current) {
+        titleRef.current.style.opacity = '1'
+        titleRef.current.style.filter = 'blur(0px)'
+        titleRef.current.style.transform = 'translateY(0)'
+      }
+      if (buttonRef.current) {
+        buttonRef.current.style.opacity = '1'
+        buttonRef.current.style.filter = 'blur(0px)'
+        buttonRef.current.style.transform = 'translateY(0)'
+      }
+      if (logoRef.current) {
+        logoRef.current.style.opacity = '1'
+        logoRef.current.style.filter = 'blur(0px)'
+        logoRef.current.style.transform = 'translateY(0)'
+      }
       return
     }
 
