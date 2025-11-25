@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './SeventhBlock.module.scss'
@@ -10,6 +10,19 @@ function SeventhBlock() {
   const svgRef = useRef(null)
   const blockRef = useRef(null)
   const titleRef = useRef(null)
+  const [svgText, setSvgText] = useState(null)
+
+  // Прелоад SVG при монтировании компонента
+  useEffect(() => {
+    fetch(step7Svg)
+      .then(response => response.text())
+      .then(text => {
+        setSvgText(text)
+      })
+      .catch(error => {
+        console.error('Error preloading SVG:', error)
+      })
+  }, [])
 
   useEffect(() => {
     if (!blockRef.current) return
@@ -38,50 +51,43 @@ function SeventhBlock() {
       )
     }
 
-    // Загружаем SVG и вставляем его inline для возможности стилизации
-    fetch(step7Svg)
-      .then(response => response.text())
-      .then(svgText => {
-        if (svgRef.current) {
-          svgRef.current.innerHTML = svgText
-          // Добавляем класс для красных точек
-          const circles = svgRef.current.querySelectorAll('circle[fill="#9A2720"]')
-          circles.forEach(circle => {
-            circle.setAttribute('class', 'redDot')
-          })
+    // Вставляем загруженный SVG
+    if (svgText && svgRef.current) {
+      svgRef.current.innerHTML = svgText
+      // Добавляем класс для красных точек
+      const circles = svgRef.current.querySelectorAll('circle[fill="#9A2720"]')
+      circles.forEach(circle => {
+        circle.setAttribute('class', 'redDot')
+      })
 
-          // Анимация масштабирования карты при прокрутке (только на десктопе)
-          if (!isMobile && blockRef.current && svgRef.current) {
-            const svgElement = svgRef.current.querySelector('svg')
-            if (svgElement) {
-              gsap.fromTo(svgElement,
-                {
-                  scale: 0.8
-                },
-                {
-                  scale: 1.15,
-                  ease: "none",
-                  scrollTrigger: {
-                    trigger: blockRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1
-                  }
-                }
-              )
+      // Анимация масштабирования карты при прокрутке (только на десктопе)
+      if (!isMobile && blockRef.current && svgRef.current) {
+        const svgElement = svgRef.current.querySelector('svg')
+        if (svgElement) {
+          gsap.fromTo(svgElement,
+            {
+              scale: 0.8
+            },
+            {
+              scale: 1.15,
+              ease: "none",
+              scrollTrigger: {
+                trigger: blockRef.current,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+              }
             }
-          }
-          // На мобильном карта отображается без анимации и скейла
+          )
         }
-      })
-      .catch(error => {
-        console.error('Error loading SVG:', error)
-      })
+      }
+      // На мобильном карта отображается без анимации и скейла
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
-  }, [])
+  }, [svgText])
 
   return (
     <div ref={blockRef} className={styles.seventhBlock}>

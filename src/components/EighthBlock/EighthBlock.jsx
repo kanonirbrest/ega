@@ -18,32 +18,22 @@ function EighthBlock() {
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
-    // На мобильном отключаем все анимации при прокрутке
+    // На мобильном полностью отключаем все анимации и не используем GSAP
     if (isMobile) {
-      // Элементы просто отображаются без анимации
-      gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
-        opacity: 1,
-        filter: "blur(0px)",
-        y: 0
-      })
+      // Элементы остаются видимыми без использования GSAP (не потребляют ресурсы)
       return
     }
 
-    // Устанавливаем начальное состояние (только на десктопе)
-    gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
+    // Анимация для заголовка
+    const titleAnimation = gsap.fromTo(titleRef.current, {
       filter: "blur(10px)",
       opacity: 0
-    })
-    gsap.set([buttonRef.current, logoRef.current], {
-      y: 50
-    })
-
-    // Анимация для заголовка
-    const titleAnimation = gsap.to(titleRef.current, {
+    }, {
       filter: "blur(0px)",
       opacity: 1,
       duration: 1.5,
       ease: "power2.out",
+      immediateRender: false,
       scrollTrigger: {
         trigger: blockRef.current,
         start: "top 80%",
@@ -52,13 +42,18 @@ function EighthBlock() {
     })
 
     // Анимация для кнопки и логотипа
-    const elementsAnimation = gsap.to([buttonRef.current, logoRef.current], {
+    const elementsAnimation = gsap.fromTo([buttonRef.current, logoRef.current], {
+      filter: "blur(10px)",
+      opacity: 0,
+      y: 50
+    }, {
       filter: "blur(0px)",
       opacity: 1,
       y: 0,
       duration: 1.5,
       stagger: 0.2,
       ease: "power2.out",
+      immediateRender: false,
       scrollTrigger: {
         trigger: blockRef.current,
         start: "top 80%",
