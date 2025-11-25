@@ -68,7 +68,9 @@ function ThirdBlock() {
     return () => {
       titleAnimation?.kill()
       textAnimation?.kill()
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      // Убиваем только свои ScrollTrigger
+      if (titleAnimation?.scrollTrigger) titleAnimation.scrollTrigger.kill()
+      if (textAnimation?.scrollTrigger) textAnimation.scrollTrigger.kill()
     }
   }, [])
 

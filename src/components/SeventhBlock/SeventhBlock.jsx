@@ -30,9 +30,26 @@ function SeventhBlock() {
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
+    // Вставляем загруженный SVG (на всех устройствах)
+    if (svgText && svgRef.current) {
+      svgRef.current.innerHTML = svgText
+      // Добавляем класс для красных точек
+      const circles = svgRef.current.querySelectorAll('circle[fill="#9A2720"]')
+      circles.forEach(circle => {
+        circle.setAttribute('class', 'redDot')
+      })
+    }
+
+    // На мобильном не создаем ScrollTrigger и не используем анимации
+    if (isMobile) {
+      // На мобильном ScrollTrigger не создается - ранний return
+      return
+    }
+
     // Анимация для заголовка (только на десктопе)
-    if (!isMobile && titleRef.current) {
-      gsap.fromTo(titleRef.current,
+    let titleAnimation = null
+    if (titleRef.current) {
+      titleAnimation = gsap.fromTo(titleRef.current,
         {
           opacity: 0,
           y: 30
@@ -51,41 +68,35 @@ function SeventhBlock() {
       )
     }
 
-    // Вставляем загруженный SVG
+    // Анимация масштабирования карты при прокрутке (только на десктопе)
+    let mapAnimation = null
     if (svgText && svgRef.current) {
-      svgRef.current.innerHTML = svgText
-      // Добавляем класс для красных точек
-      const circles = svgRef.current.querySelectorAll('circle[fill="#9A2720"]')
-      circles.forEach(circle => {
-        circle.setAttribute('class', 'redDot')
-      })
-
-      // Анимация масштабирования карты при прокрутке (только на десктопе)
-      if (!isMobile && blockRef.current && svgRef.current) {
-        const svgElement = svgRef.current.querySelector('svg')
-        if (svgElement) {
-          gsap.fromTo(svgElement,
-            {
-              scale: 0.8
-            },
-            {
-              scale: 1.15,
-              ease: "none",
-              scrollTrigger: {
-                trigger: blockRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1
-              }
+      const svgElement = svgRef.current.querySelector('svg')
+      if (svgElement) {
+        mapAnimation = gsap.fromTo(svgElement,
+          {
+            scale: 0.8
+          },
+          {
+            scale: 1.15,
+            ease: "none",
+            scrollTrigger: {
+              trigger: blockRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1
             }
-          )
-        }
+          }
+        )
       }
-      // На мобильном карта отображается без анимации и скейла
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      titleAnimation?.kill()
+      mapAnimation?.kill()
+      // Убиваем только свои ScrollTrigger
+      if (titleAnimation?.scrollTrigger) titleAnimation.scrollTrigger.kill()
+      if (mapAnimation?.scrollTrigger) mapAnimation.scrollTrigger.kill()
     }
   }, [svgText])
 
