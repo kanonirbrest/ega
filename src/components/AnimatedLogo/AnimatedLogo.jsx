@@ -15,7 +15,8 @@ function AnimatedLogo() {
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      animationData
+      animationData,
+      speed: 1.25
     })
 
     return () => {

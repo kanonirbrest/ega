@@ -51,8 +51,8 @@ function SeventhBlock() {
             circle.setAttribute('class', 'redDot')
           })
 
-          // Анимация масштабирования карты при прокрутке
-          if (blockRef.current && svgRef.current) {
+          // Анимация масштабирования карты при прокрутке (только на десктопе)
+          if (!isMobile && blockRef.current && svgRef.current) {
             const svgElement = svgRef.current.querySelector('svg')
             if (svgElement) {
               gsap.fromTo(svgElement,
@@ -66,10 +66,16 @@ function SeventhBlock() {
                     trigger: blockRef.current,
                     start: "top bottom",
                     end: "bottom top",
-                    scrub: isMobile ? 2 : 1
+                    scrub: 1
                   }
                 }
               )
+            }
+          } else if (isMobile && svgRef.current) {
+            // На мобильном просто показываем карту без анимации скролла
+            const svgElement = svgRef.current.querySelector('svg')
+            if (svgElement) {
+              gsap.set(svgElement, { scale: 1 })
             }
           }
         }

@@ -56,8 +56,8 @@ function EighthBlock() {
       ...(isMobile ? {} : { filter: "blur(0px)" }),
       opacity: 1,
       y: 0,
-      duration: isMobile ? 0.8 : 1.5,
-      stagger: isMobile ? 0.1 : 0.2,
+      duration: isMobile ? 0.6 : 1.5,
+      stagger: isMobile ? 0 : 0.2,
       ease: "power2.out",
       scrollTrigger: {
         trigger: blockRef.current,

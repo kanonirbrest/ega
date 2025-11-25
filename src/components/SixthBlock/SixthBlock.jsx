@@ -68,96 +68,123 @@ function SixthBlock() {
         )
       }
 
-      // Анимация для центрального блока
-      if (centerRef.current) {
-        gsap.fromTo(centerRef.current,
-          {
-            opacity: 0,
-            scale: 0.8
-          },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: isMobile ? 0.5 : 0.6,
-            delay: isMobile ? 0.1 : 0.2,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: blockRef.current,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
-            }
-          }
-        )
-      }
+      // На мобильном объединяем все элементы в одну простую анимацию
+      if (isMobile) {
+        const allElements = [
+          centerRef.current,
+          hongKongRef.current,
+          uaeRef.current,
+          chinaRef.current
+        ].filter(Boolean)
 
-      // Анимация для Hong Kong (первый элемент справа)
-      if (hongKongRef.current) {
-        gsap.fromTo(hongKongRef.current,
-          {
-            opacity: 0,
-            x: isMobile ? 30 : 50
-          },
-          {
-            opacity: 1,
-            x: 0,
-            duration: isMobile ? 0.5 : 0.6,
-            delay: isMobile ? 0.2 : 0.4,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: blockRef.current,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+        if (allElements.length > 0) {
+          gsap.fromTo(allElements,
+            {
+              opacity: 0,
+              y: 20
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: blockRef.current,
+                start: "top 80%",
+                toggleActions: "play reverse play reverse"
+              }
             }
-          }
-        )
-      }
+          )
+        }
+      } else {
+        // На десктопе оставляем оригинальные анимации с задержками
+        // Анимация для центрального блока
+        if (centerRef.current) {
+          gsap.fromTo(centerRef.current,
+            {
+              opacity: 0,
+              scale: 0.8
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 0.6,
+              delay: 0.2,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: blockRef.current,
+                start: "top 80%",
+                toggleActions: "play reverse play reverse"
+              }
+            }
+          )
+        }
 
-      // Анимация для UAE (второй элемент слева)
-      if (uaeRef.current) {
-        gsap.fromTo(uaeRef.current,
-          {
-            opacity: 0,
-            x: isMobile ? -30 : -50
-          },
-          {
-            opacity: 1,
-            x: 0,
-            duration: isMobile ? 0.5 : 0.6,
-            delay: isMobile ? 0.3 : 0.6,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: blockRef.current,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+        // Анимация для Hong Kong (первый элемент справа)
+        if (hongKongRef.current) {
+          gsap.fromTo(hongKongRef.current,
+            {
+              opacity: 0,
+              x: 50
+            },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.6,
+              delay: 0.4,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: blockRef.current,
+                start: "top 80%",
+                toggleActions: "play reverse play reverse"
+              }
             }
-          }
-        )
-      }
+          )
+        }
 
-      // Анимация для China (второй элемент справа)
-      if (chinaRef.current) {
-        gsap.fromTo(chinaRef.current,
-          {
-            opacity: 0,
-            x: isMobile ? 30 : 50
-          },
-          {
-            opacity: 1,
-            x: 0,
-            duration: isMobile ? 0.5 : 0.6,
-            delay: isMobile ? 0.4 : 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: blockRef.current,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+        // Анимация для UAE (второй элемент слева)
+        if (uaeRef.current) {
+          gsap.fromTo(uaeRef.current,
+            {
+              opacity: 0,
+              x: -50
+            },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.6,
+              delay: 0.6,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: blockRef.current,
+                start: "top 80%",
+                toggleActions: "play reverse play reverse"
+              }
             }
-          }
-        )
+          )
+        }
+
+        // Анимация для China (второй элемент справа)
+        if (chinaRef.current) {
+          gsap.fromTo(chinaRef.current,
+            {
+              opacity: 0,
+              x: 50
+            },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.6,
+              delay: 0.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: blockRef.current,
+                start: "top 80%",
+                toggleActions: "play reverse play reverse"
+              }
+            }
+          )
+        }
       }
     }, 100)
 
