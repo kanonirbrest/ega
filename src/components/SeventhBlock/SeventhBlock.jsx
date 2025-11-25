@@ -17,23 +17,22 @@ function SeventhBlock() {
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
-    // Анимация для заголовка
-    if (titleRef.current) {
+    // Анимация для заголовка (только на десктопе)
+    if (!isMobile && titleRef.current) {
       gsap.fromTo(titleRef.current,
         {
           opacity: 0,
-          y: isMobile ? 20 : 30
+          y: 30
         },
         {
           opacity: 1,
           y: 0,
-          duration: isMobile ? 0.8 : 1.5,
+          duration: 1.5,
           ease: "power2.out",
           scrollTrigger: {
             trigger: blockRef.current,
             start: "top 80%",
-            toggleActions: "play reverse play reverse",
-            ...(isMobile ? { markers: false } : {})
+            toggleActions: "play reverse play reverse"
           }
         }
       )

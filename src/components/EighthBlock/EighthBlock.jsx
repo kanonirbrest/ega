@@ -18,52 +18,46 @@ function EighthBlock() {
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
-    // Устанавливаем начальное состояние
+    // На мобильном отключаем все анимации при прокрутке
     if (isMobile) {
-      // На мобильных убираем blur для производительности
-      gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
-        opacity: 0
-      })
-      gsap.set([buttonRef.current, logoRef.current], {
-        y: 30
-      })
-    } else {
-      gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
-        filter: "blur(10px)",
-        opacity: 0
-      })
-      gsap.set([buttonRef.current, logoRef.current], {
-        y: 50
-      })
+      // Элементы просто отображаются без анимации
+      return
     }
+
+    // Устанавливаем начальное состояние (только на десктопе)
+    gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
+      filter: "blur(10px)",
+      opacity: 0
+    })
+    gsap.set([buttonRef.current, logoRef.current], {
+      y: 50
+    })
 
     // Анимация для заголовка
     const titleAnimation = gsap.to(titleRef.current, {
-      ...(isMobile ? {} : { filter: "blur(0px)" }),
+      filter: "blur(0px)",
       opacity: 1,
-      duration: isMobile ? 0.8 : 1.5,
+      duration: 1.5,
       ease: "power2.out",
       scrollTrigger: {
         trigger: blockRef.current,
         start: "top 80%",
-        toggleActions: "play reverse play reverse",
-        ...(isMobile ? { markers: false } : {})
+        toggleActions: "play reverse play reverse"
       }
     })
 
     // Анимация для кнопки и логотипа
     const elementsAnimation = gsap.to([buttonRef.current, logoRef.current], {
-      ...(isMobile ? {} : { filter: "blur(0px)" }),
+      filter: "blur(0px)",
       opacity: 1,
       y: 0,
-      duration: isMobile ? 0.6 : 1.5,
-      stagger: isMobile ? 0 : 0.2,
+      duration: 1.5,
+      stagger: 0.2,
       ease: "power2.out",
       scrollTrigger: {
         trigger: blockRef.current,
         start: "top 80%",
-        toggleActions: "play reverse play reverse",
-        ...(isMobile ? { markers: false } : {})
+        toggleActions: "play reverse play reverse"
       }
     })
 
