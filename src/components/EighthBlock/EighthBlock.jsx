@@ -21,6 +21,11 @@ function EighthBlock() {
     // На мобильном отключаем все анимации при прокрутке
     if (isMobile) {
       // Элементы просто отображаются без анимации
+      gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0
+      })
       return
     }
 
