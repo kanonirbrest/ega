@@ -24,23 +24,28 @@ function SixthBlock() {
     const isMobile = window.innerWidth <= 480
 
     const timer = setTimeout(() => {
-      // Анимация для заголовка
+      // На мобильном отключаем все анимации
+      if (isMobile) {
+        // Элементы просто отображаются без анимации
+        return
+      }
+
+      // Анимация для заголовка (только на десктопе)
       if (titleRef.current) {
         gsap.fromTo(titleRef.current,
           {
             opacity: 0,
-            y: isMobile ? 20 : 30
+            y: 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: isMobile ? 0.6 : 0.8,
+            duration: 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              toggleActions: "play reverse play reverse"
             }
           }
         )
@@ -51,54 +56,24 @@ function SixthBlock() {
         gsap.fromTo(cyprusRef.current,
           {
             opacity: 0,
-            x: isMobile ? -30 : -50
+            x: -50
           },
           {
             opacity: 1,
             x: 0,
-            duration: isMobile ? 0.5 : 0.6,
+            duration: 0.6,
             ease: "power2.out",
             scrollTrigger: {
               trigger: blockRef.current,
               start: "top 80%",
-              toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              toggleActions: "play reverse play reverse"
             }
           }
         )
       }
 
-      // На мобильном объединяем все элементы в одну простую анимацию
-      if (isMobile) {
-        const allElements = [
-          centerRef.current,
-          hongKongRef.current,
-          uaeRef.current,
-          chinaRef.current
-        ].filter(Boolean)
-
-        if (allElements.length > 0) {
-          gsap.fromTo(allElements,
-            {
-              opacity: 0,
-              y: 20
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: blockRef.current,
-                start: "top 80%",
-                toggleActions: "play reverse play reverse"
-              }
-            }
-          )
-        }
-      } else {
-        // На десктопе оставляем оригинальные анимации с задержками
-        // Анимация для центрального блока
+      // На десктопе оставляем оригинальные анимации с задержками
+      // Анимация для центрального блока
         if (centerRef.current) {
           gsap.fromTo(centerRef.current,
             {
@@ -185,7 +160,6 @@ function SixthBlock() {
             }
           )
         }
-      }
     }, 100)
 
     return () => {

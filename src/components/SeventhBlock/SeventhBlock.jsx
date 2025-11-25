@@ -71,13 +71,8 @@ function SeventhBlock() {
                 }
               )
             }
-          } else if (isMobile && svgRef.current) {
-            // На мобильном просто показываем карту без анимации скролла
-            const svgElement = svgRef.current.querySelector('svg')
-            if (svgElement) {
-              gsap.set(svgElement, { scale: 1 })
-            }
           }
+          // На мобильном карта отображается без анимации и скейла
         }
       })
       .catch(error => {
