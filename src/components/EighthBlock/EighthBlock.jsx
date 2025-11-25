@@ -18,9 +18,10 @@ function EighthBlock() {
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
-    // На мобильном полностью отключаем все анимации и не используем GSAP
+    // На мобильном полностью отключаем все анимации, ScrollTrigger и не используем GSAP
     if (isMobile) {
       // Явно устанавливаем видимость элементов через inline стили, чтобы переопределить любые возможные стили от GSAP
+      // ScrollTrigger НЕ создается на мобильном - ранний return предотвращает его создание
       if (titleRef.current) {
         titleRef.current.style.opacity = '1'
         titleRef.current.style.filter = 'blur(0px)'
@@ -36,19 +37,25 @@ function EighthBlock() {
         logoRef.current.style.filter = 'blur(0px)'
         logoRef.current.style.transform = 'translateY(0)'
       }
+      // Ранний return - ScrollTrigger не создается на мобильном
       return
     }
 
-    // Анимация для заголовка
-    const titleAnimation = gsap.fromTo(titleRef.current, {
+    // Устанавливаем начальное состояние
+    gsap.set([titleRef.current, buttonRef.current, logoRef.current], {
       filter: "blur(10px)",
       opacity: 0
-    }, {
+    })
+    gsap.set([buttonRef.current, logoRef.current], {
+      y: 50
+    })
+
+    // Анимация для заголовка
+    const titleAnimation = gsap.to(titleRef.current, {
       filter: "blur(0px)",
       opacity: 1,
       duration: 1.5,
       ease: "power2.out",
-      immediateRender: false,
       scrollTrigger: {
         trigger: blockRef.current,
         start: "top 80%",
@@ -57,18 +64,13 @@ function EighthBlock() {
     })
 
     // Анимация для кнопки и логотипа
-    const elementsAnimation = gsap.fromTo([buttonRef.current, logoRef.current], {
-      filter: "blur(10px)",
-      opacity: 0,
-      y: 50
-    }, {
+    const elementsAnimation = gsap.to([buttonRef.current, logoRef.current], {
       filter: "blur(0px)",
       opacity: 1,
       y: 0,
       duration: 1.5,
       stagger: 0.2,
       ease: "power2.out",
-      immediateRender: false,
       scrollTrigger: {
         trigger: blockRef.current,
         start: "top 80%",
