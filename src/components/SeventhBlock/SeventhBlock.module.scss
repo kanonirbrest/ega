@@ -67,6 +67,15 @@
   .title {
     font-size: 20px !important;
     margin-bottom: 20px !important;
+    will-change: auto !important; // Убираем will-change на мобильных
+  }
+  
+  .step7Icon {
+    will-change: auto !important; // Убираем will-change на мобильных
+    
+    :global(svg) {
+      will-change: auto !important; // Убираем will-change на мобильных
+    }
   }
   
   .jurisdictionsList {

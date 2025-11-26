@@ -216,6 +216,15 @@
   .geographyTitle {
     font-size: 20px !important;
     margin-bottom: 30px;
+    will-change: auto !important; // Убираем will-change на мобильных
+  }
+  
+  .locationItem {
+    will-change: auto !important; // Убираем will-change на мобильных
+  }
+  
+  .centerColumn {
+    will-change: auto !important; // Убираем will-change на мобильных
   }
 }
 

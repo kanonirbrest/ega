@@ -302,6 +302,11 @@
   .fifthBlock .servicesTitle {
     font-size: 20px !important;
     margin-bottom: 80px !important;
+    will-change: auto !important; // Убираем will-change на мобильных
+  }
+  
+  .fifthBlock .servicesList .serviceItem .serviceHeader .serviceTitle {
+    will-change: auto !important; // Убираем will-change на мобильных
   }
   
   .fifthBlock .servicesList .serviceItem {

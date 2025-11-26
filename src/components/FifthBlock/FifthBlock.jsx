@@ -152,7 +152,8 @@ function FifthBlock() {
               <img 
                 src={arrowRightSvg} 
                 alt="Arrow" 
-                className={`${styles.arrowRight} ${expandedItem === service.id ? styles.arrowDown : ''}`} 
+                className={`${styles.arrowRight} ${expandedItem === service.id ? styles.arrowDown : ''}`}
+                loading="lazy"
               />
             </div>
             {service.items && (

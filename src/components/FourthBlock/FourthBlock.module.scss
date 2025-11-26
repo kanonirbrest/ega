@@ -205,10 +205,18 @@
 @media (max-width: 480px) {
   .valuesTitle {
     font-size: 20px !important;
+    
+    .char {
+      will-change: auto !important; // Убираем will-change на мобильных
+    }
   }
 
   .fourthBlock {
     padding: 30px 15px 70px 15px !important;
+  }
+  
+  .fourthBlock .valuesContent .row .rowText .char {
+    will-change: auto !important; // Убираем will-change на мобильных
   }
   
   .fourthBlock .valuesContent {

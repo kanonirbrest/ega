@@ -20,7 +20,7 @@ function FirstBlock() {
         <AnimatedLogo />
       </div>
       <div className={styles.smallLogoContainer}>
-        <img src={smallLogo} alt="Small Logo" className={styles.smallLogo} />
+        <img src={smallLogo} alt="Small Logo" className={styles.smallLogo} loading="eager" />
         <nav className={styles.navMenu}>
           <a href="#values" className={styles.navLink} onClick={(e) => handleNavClick(e, 'values')}>VALUES</a>
           <a href="#services" className={styles.navLink} onClick={(e) => handleNavClick(e, 'services')}>SERVICES</a>

@@ -10,13 +10,26 @@ function AnimatedLogo() {
   useEffect(() => {
     if (!containerRef.current) return undefined
 
+    // Определяем мобильное устройство
+    const isMobile = window.innerWidth <= 480
+
+    // На мобильных используем canvas renderer для лучшей производительности
+    // и снижаем качество рендеринга
     animationRef.current = lottie.loadAnimation({
       container: containerRef.current,
-      renderer: 'svg',
+      renderer: isMobile ? 'canvas' : 'svg', // Canvas быстрее на мобильных
       loop: true,
       autoplay: true,
       animationData,
-      speed: 1.25
+      speed: 1.25,
+      ...(isMobile ? {
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice',
+          clearCanvas: true,
+          progressiveLoad: true, // Прогрессивная загрузка
+          hideOnTransparent: true
+        }
+      } : {})
     })
 
     return () => {

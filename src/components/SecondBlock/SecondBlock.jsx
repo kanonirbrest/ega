@@ -105,12 +105,12 @@ function SecondBlock() {
       style={{ backgroundImage: `url(${block2Image})` }}
     >
       <div className={styles.firstRow}>
-        <img ref={eRef} src={eSvg} alt="E" className={styles.eSvg} />
-        <img ref={arrowRef} src={arrowSvg} alt="Arrow" className={styles.arrowSvg} />
+        <img ref={eRef} src={eSvg} alt="E" className={styles.eSvg} loading="lazy" />
+        <img ref={arrowRef} src={arrowSvg} alt="Arrow" className={styles.arrowSvg} loading="lazy" />
       </div>
       <div className={styles.secondRow}>
-        <img ref={gRef} src={gSvg} alt="G" className={styles.gSvg} />
-        <img ref={aRef} src={aSvg} alt="A" className={styles.aSvg} />
+        <img ref={gRef} src={gSvg} alt="G" className={styles.gSvg} loading="lazy" />
+        <img ref={aRef} src={aSvg} alt="A" className={styles.aSvg} loading="lazy" />
       </div>
     </div>
   )

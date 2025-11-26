@@ -209,34 +209,34 @@ function SixthBlock() {
             <div ref={cyprusRef} className={styles.locationItem}>
               <div className={styles.locationContent}>
                 <div className={styles.locationName}>Cyprus</div>
-                <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} />
+                <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} loading="lazy" />
               </div>
             </div>
             
             <div ref={uaeRef} className={styles.locationItem}>
               <div className={styles.locationContent}>
                 <div className={styles.locationName}>UAE</div>
-                <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} />
+                <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} loading="lazy" />
               </div>
             </div>
           </div>
 
           <div ref={centerRef} className={styles.centerColumn}>
-            <img src={pointSvg} alt="Location point" className={styles.pointIcon} />
+            <img src={pointSvg} alt="Location point" className={styles.pointIcon} loading="lazy" />
             <div className={styles.ourOffices}>our offices</div>
           </div>
 
           <div className={styles.rightColumn}>
             <div ref={hongKongRef} className={styles.locationItem}>
               <div className={styles.locationContent}>
-                <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} />
+                <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} loading="lazy" />
                 <div className={styles.locationName}>Hong Kong</div>
               </div>
             </div>
             
             <div ref={chinaRef} className={styles.locationItem}>
               <div className={styles.locationContent}>
-                <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} />
+                <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} loading="lazy" />
                 <div className={styles.locationName}>China</div>
               </div>
             </div>

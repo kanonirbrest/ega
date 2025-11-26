@@ -14,7 +14,7 @@ function EighthBlock() {
         <button className={styles.writeUsButton} onClick={handleWriteUsClick}>WRITE US</button>
         
         <div className={styles.logoContainer}>
-          <img src={vectorSvg} alt="Arrow" className={styles.logoIcon} />
+          <img src={vectorSvg} alt="Arrow" className={styles.logoIcon} loading="lazy" />
         </div>
       </div>
     </div>

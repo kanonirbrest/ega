@@ -287,7 +287,7 @@ function FourthBlock() {
               <br/>
               {splitText('globalization')}
             </p>
-            <img ref={planetIconRef} src={planetSvg} alt="Planet" className={styles.planetSvg} />
+            <img ref={planetIconRef} src={planetSvg} alt="Planet" className={styles.planetSvg} loading="lazy" />
           </div>
           <div className={`${styles.row} ${styles.rowCenter}`}>
             <p ref={row2Ref} className={styles.rowText}>
@@ -295,14 +295,14 @@ function FourthBlock() {
               <br/>
               {splitText('support')}
             </p>
-            <img ref={arrowsIconRef} src={arrowsSvg} alt="Arrows" className={styles.arrowsSvg} />
-            <img ref={oneArrowIconRef} src={oneArrowSvg} alt="One Arrow" className={styles.oneArrowSvg} />
+            <img ref={arrowsIconRef} src={arrowsSvg} alt="Arrows" className={styles.arrowsSvg} loading="lazy" />
+            <img ref={oneArrowIconRef} src={oneArrowSvg} alt="One Arrow" className={styles.oneArrowSvg} loading="lazy" />
           </div>
           <div className={`${styles.row} ${styles.rowEnd}`}>
             <p ref={row3Ref} className={styles.rowText}>
               {splitText('confidentiality')}
             </p>
-            <img ref={menuIconRef} src={menuSvg} alt="Menu" className={styles.planetSvg} />
+            <img ref={menuIconRef} src={menuSvg} alt="Menu" className={styles.planetSvg} loading="lazy" />
           </div>
         </div>
       </div>

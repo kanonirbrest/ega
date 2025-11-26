@@ -129,12 +129,18 @@
       margin-left: 0;
       margin-top: 22px;
       margin-bottom: 36px;
+      will-change: auto; // Убираем will-change на мобильных для производительности
     }
 
     .leadText {
       font-size: 32px;
       line-height: 34px;
       margin-left: 0;
+      will-change: auto; // Убираем will-change на мобильных для производительности
+    }
+
+    .leadLine {
+      will-change: auto; // Убираем will-change на мобильных для производительности
     }
   }
 }
