@@ -71,22 +71,22 @@ function FifthBlock() {
       const anim = gsap.fromTo(titleRef.current,
         {
           opacity: 0,
-          y: isMobile ? 30 : 50
+          y: 50
         },
         {
           opacity: 1,
           y: 0,
-          duration: isMobile ? 0.8 : 1.5,
+          duration: 1.5,
           ease: "power2.out",
           scrollTrigger: {
             trigger: blockRef.current,
             start: "top 80%",
             toggleActions: "play reverse play reverse",
-            ...(isMobile ? { 
-              markers: false,
-              invalidateOnRefresh: true,
-              anticipatePin: 0
-            } : {})
+            // ...(isMobile ? { 
+            //   markers: false,
+            //   invalidateOnRefresh: true,
+            //   anticipatePin: 0
+            // } : {})
           }
         }
       )
@@ -99,22 +99,18 @@ function FifthBlock() {
         const anim = gsap.fromTo(titleEl,
           {
             opacity: 0,
-            y: isMobile ? 20 : 30
+            y: 30
           },
           {
             opacity: 1,
             y: 0,
-            duration: isMobile ? 0.8 : 1.5,
+            duration: 1.5,
             ease: "power2.out",
             scrollTrigger: {
               trigger: titleEl,
               start: "top 85%",
               toggleActions: "play reverse play reverse",
-              ...(isMobile ? { 
-                markers: false,
-                invalidateOnRefresh: true,
-                anticipatePin: 0
-              } : {})
+      
             }
           }
         )
