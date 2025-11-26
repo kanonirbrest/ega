@@ -83,10 +83,10 @@ function SecondBlock() {
     let observer = null
 
     if (isMobile) {
-      // На мобильном: используем ScrollTrigger для запуска анимации, когда блок в центре экрана
+      // На мобильном: используем ScrollTrigger для запуска анимации, когда блок на 20% ниже центра экрана
       scrollTrigger = ScrollTrigger.create({
         trigger: blockRef.current,
-        start: "center center", // Анимация запускается, когда центр блока в центре экрана
+        start: "center 70%", // Анимация запускается, когда центр блока на 70% от верха экрана (20% ниже центра, так как центр = 50%, 50% + 20% = 70%)
         onEnter: () => {
           startAnimation()
         }
