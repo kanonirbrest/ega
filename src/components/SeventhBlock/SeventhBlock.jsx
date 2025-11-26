@@ -6,22 +6,49 @@ import step7Svg from '../../../assets/svg/step7/step7.svg'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Глобальный кэш для предзагруженного SVG
+let svgCache = null
+let svgLoadPromise = null
+
+// Функция предзагрузки SVG (вызывается сразу при импорте модуля)
+function preloadSvg() {
+  if (svgLoadPromise) return svgLoadPromise
+  if (svgCache) return Promise.resolve(svgCache)
+  
+  svgLoadPromise = fetch(step7Svg)
+    .then(response => response.text())
+    .then(text => {
+      svgCache = text
+      return text
+    })
+    .catch(error => {
+      console.error('Error preloading SVG:', error)
+      svgLoadPromise = null
+      throw error
+    })
+  
+  return svgLoadPromise
+}
+
+// Начинаем предзагрузку сразу при импорте модуля
+preloadSvg()
+
 function SeventhBlock() {
   const svgRef = useRef(null)
   const blockRef = useRef(null)
   const titleRef = useRef(null)
-  const [svgText, setSvgText] = useState(null)
+  const [svgText, setSvgText] = useState(svgCache) // Используем кэш, если уже загружен
 
-  // Прелоад SVG при монтировании компонента
+  // Если SVG еще не загружен, ждем загрузки
   useEffect(() => {
-    fetch(step7Svg)
-      .then(response => response.text())
-      .then(text => {
-        setSvgText(text)
-      })
-      .catch(error => {
-        console.error('Error preloading SVG:', error)
-      })
+    if (svgCache) {
+      setSvgText(svgCache)
+      return
+    }
+    
+    preloadSvg().then(text => {
+      setSvgText(text)
+    })
   }, [])
 
   useEffect(() => {

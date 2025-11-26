@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "optimize:svg": "svgo -f assets/svg --multipass"
   },
   "dependencies": {
     "gsap": "^3.13.0",
@@ -26,6 +27,7 @@
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
     "sass": "^1.93.2",
+    "svgo": "^4.0.0",
     "vite": "^7.1.7"
   }
 }
