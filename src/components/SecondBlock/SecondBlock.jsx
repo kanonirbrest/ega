@@ -5,7 +5,7 @@ import arrowSvg from '../../../assets/svg/arrow.svg'
 import eSvg from '../../../assets/svg/e.svg'
 import aSvg from '../../../assets/svg/a.svg'
 import gSvg from '../../../assets/svg/g.svg'
-import block2Image from '../../../assets/png/block2.png'
+import block2Image from '../../../assets/png/block2.webp'
 
 function SecondBlock() {
   const blockRef = useRef(null)
