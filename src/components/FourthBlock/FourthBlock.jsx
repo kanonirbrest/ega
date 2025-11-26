@@ -36,11 +36,13 @@ function FourthBlock() {
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
+    const animations = []
+
     const timer = setTimeout(() => {
       // Анимация для заголовка
       if (titleRef.current) {
         const chars = titleRef.current.querySelectorAll(`.${styles.char}`)
-        gsap.fromTo(chars, 
+        const anim = gsap.fromTo(chars, 
           {
             opacity: 0,
             y: isMobile ? 30 : 50,
@@ -61,12 +63,13 @@ function FourthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // Анимация для первой строки
       if (row1Ref.current) {
         const chars = row1Ref.current.querySelectorAll(`.${styles.char}`)
-        gsap.fromTo(chars,
+        const anim = gsap.fromTo(chars,
           {
             opacity: 0,
             y: isMobile ? 20 : 30
@@ -85,11 +88,12 @@ function FourthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // Анимация для иконки планеты
       if (planetIconRef.current) {
-        gsap.fromTo(planetIconRef.current,
+        const anim = gsap.fromTo(planetIconRef.current,
           {
             opacity: 0,
             y: isMobile ? 20 : 30
@@ -108,12 +112,13 @@ function FourthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // Анимация для второй строки
       if (row2Ref.current) {
         const chars = row2Ref.current.querySelectorAll(`.${styles.char}`)
-        gsap.fromTo(chars,
+        const anim = gsap.fromTo(chars,
           {
             opacity: 0,
             y: isMobile ? 20 : 30
@@ -132,11 +137,12 @@ function FourthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // Анимация для иконки стрелок
       if (arrowsIconRef.current) {
-        gsap.fromTo(arrowsIconRef.current,
+        const anim = gsap.fromTo(arrowsIconRef.current,
           {
             opacity: 0,
             y: isMobile ? 20 : 30
@@ -155,11 +161,12 @@ function FourthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // Анимация для иконки одной стрелки
       if (oneArrowIconRef.current) {
-        gsap.fromTo(oneArrowIconRef.current,
+        const anim = gsap.fromTo(oneArrowIconRef.current,
           {
             opacity: 0,
             y: isMobile ? 20 : 30
@@ -178,12 +185,13 @@ function FourthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // Анимация для третьей строки
       if (row3Ref.current) {
         const chars = row3Ref.current.querySelectorAll(`.${styles.char}`)
-        gsap.fromTo(chars,
+        const anim = gsap.fromTo(chars,
           {
             opacity: 0,
             y: isMobile ? 20 : 30
@@ -202,11 +210,12 @@ function FourthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // Анимация для иконки меню
       if (menuIconRef.current) {
-        gsap.fromTo(menuIconRef.current,
+        const anim = gsap.fromTo(menuIconRef.current,
           {
             opacity: 0,
             y: isMobile ? 20 : 30
@@ -225,12 +234,17 @@ function FourthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
     }, 100)
 
     return () => {
       clearTimeout(timer)
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      // Убиваем только свои ScrollTrigger
+      animations.forEach(anim => {
+        if (anim?.scrollTrigger) anim.scrollTrigger.kill()
+        anim?.kill()
+      })
     }
   }, [])
 

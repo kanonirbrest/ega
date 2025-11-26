@@ -1,11 +1,12 @@
 .eighthBlock {
   position: relative;
   width: 100%;
-  aspect-ratio: 1920 / 1200;
+  // aspect-ratio: 1920 / 1200;
   background: #FFFFFF;
   display: flex;
   // align-items: center;
   padding-top: 80px;
+  padding-bottom: 120px;
   justify-content: center;
   
   &::after {

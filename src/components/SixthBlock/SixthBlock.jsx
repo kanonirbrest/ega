@@ -23,6 +23,8 @@ function SixthBlock() {
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
+    const animations = []
+
     const timer = setTimeout(() => {
       // На мобильном отключаем все анимации
       if (isMobile) {
@@ -32,7 +34,7 @@ function SixthBlock() {
 
       // Анимация для заголовка (только на десктопе)
       if (titleRef.current) {
-        gsap.fromTo(titleRef.current,
+        const anim = gsap.fromTo(titleRef.current,
           {
             opacity: 0,
             y: 30
@@ -49,11 +51,12 @@ function SixthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // Анимация для Cyprus (первый элемент слева)
       if (cyprusRef.current) {
-        gsap.fromTo(cyprusRef.current,
+        const anim = gsap.fromTo(cyprusRef.current,
           {
             opacity: 0,
             x: -50
@@ -70,12 +73,13 @@ function SixthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
 
       // На десктопе оставляем оригинальные анимации с задержками
       // Анимация для центрального блока
         if (centerRef.current) {
-          gsap.fromTo(centerRef.current,
+          const anim = gsap.fromTo(centerRef.current,
             {
               opacity: 0,
               scale: 0.8
@@ -93,11 +97,12 @@ function SixthBlock() {
               }
             }
           )
+          animations.push(anim)
         }
 
         // Анимация для Hong Kong (первый элемент справа)
         if (hongKongRef.current) {
-          gsap.fromTo(hongKongRef.current,
+          const anim = gsap.fromTo(hongKongRef.current,
             {
               opacity: 0,
               x: 50
@@ -115,11 +120,12 @@ function SixthBlock() {
               }
             }
           )
+          animations.push(anim)
         }
 
         // Анимация для UAE (второй элемент слева)
         if (uaeRef.current) {
-          gsap.fromTo(uaeRef.current,
+          const anim = gsap.fromTo(uaeRef.current,
             {
               opacity: 0,
               x: -50
@@ -137,11 +143,12 @@ function SixthBlock() {
               }
             }
           )
+          animations.push(anim)
         }
 
         // Анимация для China (второй элемент справа)
         if (chinaRef.current) {
-          gsap.fromTo(chinaRef.current,
+          const anim = gsap.fromTo(chinaRef.current,
             {
               opacity: 0,
               x: 50
@@ -159,12 +166,17 @@ function SixthBlock() {
               }
             }
           )
+          animations.push(anim)
         }
     }, 100)
 
     return () => {
       clearTimeout(timer)
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      // Убиваем только свои ScrollTrigger
+      animations.forEach(anim => {
+        if (anim?.scrollTrigger) anim.scrollTrigger.kill()
+        anim?.kill()
+      })
     }
   }, [])
 

@@ -64,9 +64,11 @@ function FifthBlock() {
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
+    const animations = []
+
     // Анимация для заголовка "SERVICES"
     if (titleRef.current) {
-      gsap.fromTo(titleRef.current,
+      const anim = gsap.fromTo(titleRef.current,
         {
           opacity: 0,
           y: isMobile ? 30 : 50
@@ -84,12 +86,13 @@ function FifthBlock() {
           }
         }
       )
+      animations.push(anim)
     }
 
     // Анимация для заголовков сервисов
     titleRefs.current.forEach((titleEl) => {
       if (titleEl) {
-        gsap.fromTo(titleEl,
+        const anim = gsap.fromTo(titleEl,
           {
             opacity: 0,
             y: isMobile ? 20 : 30
@@ -107,11 +110,16 @@ function FifthBlock() {
             }
           }
         )
+        animations.push(anim)
       }
     })
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      // Убиваем только свои ScrollTrigger
+      animations.forEach(anim => {
+        if (anim?.scrollTrigger) anim.scrollTrigger.kill()
+        anim?.kill()
+      })
     }
   }, [])
 
