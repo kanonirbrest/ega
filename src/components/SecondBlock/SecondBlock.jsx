@@ -1,11 +1,14 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './SecondBlock.module.scss'
 import arrowSvg from '../../../assets/svg/arrow.svg'
 import eSvg from '../../../assets/svg/e.svg'
 import aSvg from '../../../assets/svg/a.svg'
 import gSvg from '../../../assets/svg/g.svg'
 import block2Image from '../../../assets/png/block2.webp'
+
+gsap.registerPlugin(ScrollTrigger)
 
 function SecondBlock() {
   const blockRef = useRef(null)
@@ -19,6 +22,9 @@ function SecondBlock() {
     
     if (elements.length === 0 || !blockRef.current) return
 
+    // Определяем мобильное устройство
+    const isMobile = window.innerWidth <= 480
+
     // Устанавливаем начальную прозрачность
     elements.forEach(el => {
       if (el) {
@@ -27,6 +33,8 @@ function SecondBlock() {
     })
 
     let hasAnimated = false
+    let animationTimeline = null
+    let timer = null
 
     // Функция запуска анимации
     const startAnimation = () => {
@@ -34,12 +42,12 @@ function SecondBlock() {
       hasAnimated = true
 
       // Небольшая задержка для корректного вычисления позиций
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         // Вычисляем центр блока
         const blockRect = blockRef.current.getBoundingClientRect()
         
         // Создаем анимацию перемещения букв из центра на свои места
-        const tl = gsap.timeline()
+        animationTimeline = gsap.timeline()
 
         elements.forEach((el, index) => {
           if (el) {
@@ -55,7 +63,7 @@ function SecondBlock() {
             const offsetY = centerY - finalY - finalRect.height / 2
             
             // Анимируем от центра к финальной позиции с изменением opacity
-            tl.fromTo(el, {
+            animationTimeline.fromTo(el, {
               x: offsetX,
               y: offsetY,
               opacity: 0
@@ -69,30 +77,45 @@ function SecondBlock() {
           }
         })
       }, 50)
-
-      return timer
     }
 
-    // Создаем Intersection Observer для отслеживания видимости блока
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            startAnimation()
-            // Отключаем observer после первого запуска анимации
-            observer.disconnect()
-          }
-        })
-      },
-      {
-        threshold: 0.3 // Запускаем анимацию, когда видно 30% блока
-      }
-    )
+    let scrollTrigger = null
+    let observer = null
 
-    observer.observe(blockRef.current)
+    if (isMobile) {
+      // На мобильном: используем ScrollTrigger для запуска анимации, когда блок в центре экрана
+      scrollTrigger = ScrollTrigger.create({
+        trigger: blockRef.current,
+        start: "center center", // Анимация запускается, когда центр блока в центре экрана
+        onEnter: () => {
+          startAnimation()
+        }
+      })
+    } else {
+      // На десктопе: используем IntersectionObserver (как было изначально)
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              startAnimation()
+              // Отключаем observer после первого запуска анимации
+              observer.disconnect()
+            }
+          })
+        },
+        {
+          threshold: 0.3 // Запускаем анимацию, когда видно 30% блока
+        }
+      )
+
+      observer.observe(blockRef.current)
+    }
 
     return () => {
-      observer.disconnect()
+      if (timer) clearTimeout(timer)
+      scrollTrigger?.kill()
+      observer?.disconnect()
+      animationTimeline?.kill()
       // Останавливаем все GSAP анимации при размонтировании
       gsap.killTweensOf(elements)
     }
