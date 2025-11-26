@@ -29,6 +29,25 @@ function SixthBlock() {
       // На мобильном отключаем все анимации
       if (isMobile) {
         // Элементы просто отображаются без анимации
+        // Убеждаемся, что элементы видны
+        if (titleRef.current) {
+          gsap.set(titleRef.current, { opacity: 1, x: 0, y: 0 })
+        }
+        if (cyprusRef.current) {
+          gsap.set(cyprusRef.current, { opacity: 1, x: 0, y: 0 })
+        }
+        if (uaeRef.current) {
+          gsap.set(uaeRef.current, { opacity: 1, x: 0, y: 0 })
+        }
+        if (centerRef.current) {
+          gsap.set(centerRef.current, { opacity: 1, x: 0, y: 0, scale: 1 })
+        }
+        if (hongKongRef.current) {
+          gsap.set(hongKongRef.current, { opacity: 1, x: 0, y: 0 })
+        }
+        if (chinaRef.current) {
+          gsap.set(chinaRef.current, { opacity: 1, x: 0, y: 0 })
+        }
         return
       }
 

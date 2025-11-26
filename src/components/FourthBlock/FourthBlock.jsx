@@ -59,7 +59,11 @@ function FourthBlock() {
               trigger: blockRef.current,
               start: "top 80%",
               toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              ...(isMobile ? { 
+                markers: false,
+                invalidateOnRefresh: true,
+                anticipatePin: 0
+              } : {})
             }
           }
         )
@@ -84,7 +88,11 @@ function FourthBlock() {
               trigger: row1Ref.current,
               start: "top 85%",
               toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              ...(isMobile ? { 
+                markers: false,
+                invalidateOnRefresh: true,
+                anticipatePin: 0
+              } : {})
             }
           }
         )
@@ -108,7 +116,11 @@ function FourthBlock() {
               trigger: row1Ref.current,
               start: "top 85%",
               toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              ...(isMobile ? { 
+                markers: false,
+                invalidateOnRefresh: true,
+                anticipatePin: 0
+              } : {})
             }
           }
         )
@@ -133,7 +145,11 @@ function FourthBlock() {
               trigger: row2Ref.current,
               start: "top 85%",
               toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              ...(isMobile ? { 
+                markers: false,
+                invalidateOnRefresh: true,
+                anticipatePin: 0
+              } : {})
             }
           }
         )
@@ -157,7 +173,11 @@ function FourthBlock() {
               trigger: row2Ref.current,
               start: "top 85%",
               toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              ...(isMobile ? { 
+                markers: false,
+                invalidateOnRefresh: true,
+                anticipatePin: 0
+              } : {})
             }
           }
         )
@@ -181,7 +201,11 @@ function FourthBlock() {
               trigger: row2Ref.current,
               start: "top 85%",
               toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              ...(isMobile ? { 
+                markers: false,
+                invalidateOnRefresh: true,
+                anticipatePin: 0
+              } : {})
             }
           }
         )
@@ -206,7 +230,11 @@ function FourthBlock() {
               trigger: row3Ref.current,
               start: "top 85%",
               toggleActions: "play reverse play reverse",
-              ...(isMobile ? { markers: false } : {})
+              ...(isMobile ? { 
+                markers: false,
+                invalidateOnRefresh: true,
+                anticipatePin: 0
+              } : {})
             }
           }
         )

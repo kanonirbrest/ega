@@ -45,7 +45,11 @@ function ThirdBlock() {
         trigger: blockRef.current,
         start: "top 80%",
         toggleActions: "play reverse play reverse",
-        ...(isMobile ? { markers: false } : {})
+        ...(isMobile ? { 
+          markers: false,
+          invalidateOnRefresh: true,
+          anticipatePin: 0
+        } : {})
       }
     })
 

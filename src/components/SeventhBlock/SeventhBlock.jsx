@@ -43,6 +43,10 @@ function SeventhBlock() {
     // На мобильном не создаем ScrollTrigger и не используем анимации
     if (isMobile) {
       // На мобильном ScrollTrigger не создается - ранний return
+      // Убеждаемся, что заголовок виден
+      if (titleRef.current) {
+        gsap.set(titleRef.current, { opacity: 1, y: 0 })
+      }
       return
     }
 
