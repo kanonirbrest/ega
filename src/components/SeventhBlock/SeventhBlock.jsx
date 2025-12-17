@@ -61,9 +61,14 @@ function SeventhBlock() {
     if (svgText && svgRef.current) {
       svgRef.current.innerHTML = svgText
       // Добавляем класс для красных точек
-      const circles = svgRef.current.querySelectorAll('circle[fill="#9A2720"]')
-      circles.forEach(circle => {
+      const redCircles = svgRef.current.querySelectorAll('circle[fill="#9A2720"]')
+      redCircles.forEach(circle => {
         circle.setAttribute('class', 'redDot')
+      })
+      // Добавляем класс для темных точек
+      const darkCircles = svgRef.current.querySelectorAll('circle[fill="#003B3F"]')
+      darkCircles.forEach(circle => {
+        circle.setAttribute('class', 'darkDot')
       })
     }
 

@@ -33,3 +33,17 @@ body {
     fill: #FFFFFF;
   }
 }
+
+/* Анимация мигания темных точек в SVG */
+.darkDot {
+  animation: blinkDarkDot 1.5s ease-in-out infinite;
+}
+
+@keyframes blinkDarkDot {
+  0%, 100% {
+    fill: #003B3F;
+  }
+  50% {
+    fill: #FFFFFF;
+  }
+}
