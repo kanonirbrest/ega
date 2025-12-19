@@ -3,11 +3,14 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './FifthBlock.module.scss'
 import arrowRightSvg from '../../../assets/svg/arrowRight.svg'
+import image1 from '../../../assets/png/step5/1.png'
+import image2 from '../../../assets/png/step5/2.png'
+import image3 from '../../../assets/png/step5/3.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
 function FifthBlock() {
-  const [expandedItem, setExpandedItem] = useState(3) // Третий элемент (03) развернут по умолчанию
+  const [expandedItem, setExpandedItem] = useState([1, 2, 3]) // Все три элемента развернуты по умолчанию
   const blockRef = useRef(null)
   const titleRef = useRef(null)
   const titleRefs = useRef([])
@@ -16,29 +19,31 @@ function FifthBlock() {
     {
       id: 1,
       title: 'CORPORATE AND LEGAL SERVICES',
+      image: image1,
       items: [
-        'legal entity incorporation',
-        'legal entity liquidation',
-        'legal entity redomicilation',
-        'trust incorporation',
-        'legal advise, consulting and due diligence',
-        'ongoing legal assistance (drafting of agreements, resolutions etc)',
-      ]
-    },
-    {
-      id: 2,
-      title: 'BANKING & TRANSACTION SERVICES',
-      items: [
-        'corporate bank account opening',
-        'individual bank account opening',
+        'corporate bank account opening individual bank account opening',
         'compliance and AML assistance for ongoing international banking transaction',
         'correspondent (loro) bank account opening for financial institutions',
         'advisory on payment routes for international banking transactions'
       ]
     },
     {
+      id: 2,
+      title: 'BANKING & TRANSACTION SERVICES',
+      image: image2,
+      items: [
+        'legal entity incorporation',
+        'legal entity liquidation',
+        'legal entity redomicilation',
+        'trust incorporation',
+        'legal advise, consulting and due diligence',
+        'ongoing legal assistance (drafting of agreements, resolutions etc)'
+      ]
+    },
+    {
       id: 3,
       title: 'AUDIT & TAXATION SERVICES',
+      image: image3,
       items: [
         'statutory audit services',
         'consolidates audit services',
@@ -46,7 +51,7 @@ function FifthBlock() {
         'tax registration and submission',
         'tax consulting',
         'accounting and bookkeeping services',
-        'transfer pricing ',
+        'transfer pricing',
         'financial due diligence'
       ]
     }
@@ -55,14 +60,15 @@ function FifthBlock() {
   const toggleItem = (id, e) => {
     e.preventDefault()
     e.stopPropagation()
-    setExpandedItem(expandedItem === id ? null : id)
+    setExpandedItem(prev => 
+      prev.includes(id) 
+        ? prev.filter(itemId => itemId !== id)
+        : [...prev, id]
+    )
   }
 
   useEffect(() => {
     if (!blockRef.current) return
-
-    // Определяем мобильное устройство
-    const isMobile = window.innerWidth <= 480
 
     const animations = []
 
@@ -133,28 +139,39 @@ function FifthBlock() {
       <h2 ref={titleRef} className={styles.servicesTitle}>SERVICES</h2>
       <div className={styles.servicesList}>
         {services.map((service, index) => (
-          <div key={service.id} className={`${styles.serviceItem} ${expandedItem === service.id ? styles.serviceItemActive : ''}`}>
+          <div key={service.id} className={`${styles.serviceItem} ${expandedItem.includes(service.id) ? styles.serviceItemActive : ''}`}>
+            <img 
+              src={service.image} 
+              alt={service.title}
+              className={styles.serviceImage}
+              style={{
+                marginTop: service.id === 1 ? '216px' : service.id === 2 ? '108px' : '0'
+              }}
+              loading="lazy"
+            />
             <div 
-              className={`${styles.serviceHeader} ${expandedItem !== service.id ? styles.serviceHeaderInactive : ''}`}
+              className={`${styles.serviceHeader} ${!expandedItem.includes(service.id) ? styles.serviceHeaderInactive : ''}`}
               onClick={(e) => toggleItem(service.id, e)}
             >
-              <span className={styles.number}>0{service.id}</span>
-              <h3 
-                ref={el => titleRefs.current[index] = el}
-                className={styles.serviceTitle}
-              >
-                {service.title}
-              </h3>
-              <img 
-                src={arrowRightSvg} 
-                alt="Arrow" 
-                className={`${styles.arrowRight} ${expandedItem === service.id ? styles.arrowDown : ''}`}
-                loading="lazy"
-              />
+            <h3 
+              ref={el => titleRefs.current[index] = el}
+              className={styles.serviceTitle}
+            >
+              {service.title}
+            </h3>
+            <div className={styles.numberWrapper}>
+                <span className={styles.number}>0{service.id}</span>
+                <img 
+                  src={arrowRightSvg} 
+                  alt="Arrow" 
+                  className={`${styles.arrowRight} ${expandedItem.includes(service.id) ? styles.arrowDown : ''}`}
+                  loading="lazy"
+                />
+              </div>
             </div>
             {service.items && (
               <ul 
-                className={`${styles.serviceItems} ${expandedItem === service.id ? styles.serviceItemsOpen : ''}`}
+                className={`${styles.serviceItems} ${expandedItem.includes(service.id) ? styles.serviceItemsOpen : ''}`}
               >
                 {service.items.map((item, itemIndex) => (
                   <li key={itemIndex} className={styles.serviceItemText}>
