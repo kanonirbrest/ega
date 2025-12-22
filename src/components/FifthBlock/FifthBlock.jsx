@@ -100,7 +100,7 @@ function FifthBlock() {
       animations.push(anim)
     }
 
-    // Анимация для блоков serviceItem слева направо по очереди
+    // Анимация для блоков serviceItem слева направо последовательно
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: blockRef.current,
@@ -112,12 +112,13 @@ function FifthBlock() {
     serviceItemRefs.current.forEach((itemEl, index) => {
       if (itemEl) {
         gsap.set(itemEl, { opacity: 0, x: -100 })
+        // Используем ">" чтобы каждый блок появлялся после завершения предыдущего
         timeline.to(itemEl, {
           opacity: 1,
           x: 0,
           duration: 0.8,
           ease: "power2.out"
-        }, index * 0.2) // Задержка 0.2 секунды между каждым блоком
+        }, index === 0 ? 0 : ">") // Первый блок сразу, остальные после предыдущего
       }
     })
     animations.push(timeline)
