@@ -42,7 +42,7 @@ function FifthBlock() {
     },
     {
       id: 3,
-      title: 'AUDIT & TAXATION SERVICES',
+      title: <>AUDIT & TAXATION<br />SERVICES</>,
       image: image3,
       items: [
         'statutory audit services',
@@ -136,7 +136,7 @@ function FifthBlock() {
 
   return (
     <div ref={blockRef} id="services" className={styles.fifthBlock}>
-      <h2 ref={titleRef} className={styles.servicesTitle}>SERVICES</h2>
+      <h2 ref={titleRef} className={styles.servicesTitle}><br />SERVICES</h2>
       <div className={styles.servicesList}>
         {services.map((service, index) => (
           <div key={service.id} className={`${styles.serviceItem} ${expandedItem.includes(service.id) ? styles.serviceItemActive : ''}`}>

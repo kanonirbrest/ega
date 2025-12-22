@@ -36,11 +36,10 @@
       display: flex;
       flex-direction: column;
       flex: 1;
-      max-width: 558px;
 
       .serviceImage {
-        width: 558px;
-        height: 387px;
+        width: 100%;
+        height: auto;
         object-fit: cover;
         margin-bottom: 41px;
       }
@@ -149,11 +148,9 @@
   .fifthBlock {
     .servicesList {
       .serviceItem {
-        max-width: 405.5265px;
-
         .serviceImage {
-          width: 405.5265px;
-          height: 281.25225px;
+          width: 100%;
+          height: auto;
         }
 
         .serviceHeader {
@@ -196,11 +193,9 @@
   .fifthBlock {
     .servicesList {
       .serviceItem {
-        max-width: 294.716383875px;
-
         .serviceImage {
-          width: 294.716383875px;
-          height: 204.4000626875px;
+          width: 100%;
+          height: auto;
         }
 
         .serviceHeader {
@@ -243,11 +238,9 @@
   .fifthBlock {
     .servicesList {
       .serviceItem {
-        max-width: 180.8674387840875px;
-
         .serviceImage {
-          width: 180.8674387840875px;
-          height: 125.44031847131875px;
+          width: 100%;
+          height: auto;
         }
 
         // Уменьшаем margin-top на 30% для первого и второго элемента
@@ -317,20 +310,18 @@
       align-items: center;
 
       .serviceItem {
-        max-width: 267.84px;
-
         // Увеличиваем специфичность селектора
         img.serviceImage {
-          width: 267.84px;
-          height: 185.76px;
+          width: 100%;
+          height: auto;
           margin-top: 10px !important;
         }
       }
 
       // Дополнительный селектор с увеличенной специфичностью
       .servicesList .serviceItem img.serviceImage {
-        width: 267.84px;
-        height: 185.76px;
+        width: 100%;
+        height: auto;
         margin-top: 10px !important;
       }
 
