@@ -14,6 +14,7 @@ function FifthBlock() {
   const blockRef = useRef(null)
   const titleRef = useRef(null)
   const titleRefs = useRef([])
+  const serviceItemRefs = useRef([])
 
   const services = [
     {
@@ -99,6 +100,28 @@ function FifthBlock() {
       animations.push(anim)
     }
 
+    // Анимация для блоков serviceItem слева направо по очереди
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: blockRef.current,
+        start: "top 80%",
+        toggleActions: "play reverse play reverse",
+      }
+    })
+
+    serviceItemRefs.current.forEach((itemEl, index) => {
+      if (itemEl) {
+        gsap.set(itemEl, { opacity: 0, x: -100 })
+        timeline.to(itemEl, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        }, index * 0.2) // Задержка 0.2 секунды между каждым блоком
+      }
+    })
+    animations.push(timeline)
+
     // Анимация для заголовков сервисов
     titleRefs.current.forEach((titleEl) => {
       if (titleEl) {
@@ -139,7 +162,11 @@ function FifthBlock() {
       <h2 ref={titleRef} className={styles.servicesTitle}><br />SERVICES</h2>
       <div className={styles.servicesList}>
         {services.map((service, index) => (
-          <div key={service.id} className={`${styles.serviceItem} ${expandedItem.includes(service.id) ? styles.serviceItemActive : ''}`}>
+          <div 
+            key={service.id} 
+            ref={el => serviceItemRefs.current[index] = el}
+            className={`${styles.serviceItem} ${expandedItem.includes(service.id) ? styles.serviceItemActive : ''}`}
+          >
             <img 
               src={service.image} 
               alt={service.title}
