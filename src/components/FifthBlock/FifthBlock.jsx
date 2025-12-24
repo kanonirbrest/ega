@@ -123,31 +123,6 @@ function FifthBlock() {
     })
     animations.push(timeline)
 
-    // Анимация для заголовков сервисов
-    titleRefs.current.forEach((titleEl) => {
-      if (titleEl) {
-        const anim = gsap.fromTo(titleEl,
-          {
-            opacity: 0,
-            y: 30
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.5,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: titleEl,
-              start: "top 85%",
-              toggleActions: "play reverse play reverse",
-      
-            }
-          }
-        )
-        animations.push(anim)
-      }
-    })
-
     return () => {
       // Убиваем только свои ScrollTrigger
       animations.forEach(anim => {
