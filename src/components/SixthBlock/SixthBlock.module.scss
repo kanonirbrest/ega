@@ -3,22 +3,41 @@
   width: 100%;
   // aspect-ratio: 1920 / 774;
   background: #003B3F;
-  padding: 70px;
+  padding: clamp(40px, 3.6vw, 70px);
   display: flex;
   flex-direction: column;
 }
 
 .geographyTitle {
-  font-family: 'Questrial', sans-serif;
-  font-style: normal;
+  font-family: Questrial;
   font-weight: 400;
-  font-size: 45px;
-  line-height: 1.2;
-  color: #FFFFFF;
+  font-style: Regular;
+  font-size: 52px;
+  line-height: 100%;
+  letter-spacing: 0%;
   text-transform: uppercase;
-  margin: 0 0 140px 0;
+  color: rgba(255, 255, 255, 1);
+  margin: 0 0 clamp(30px, 6.25vw, 120px) 0;
   padding: 0;
   will-change: transform, opacity;
+}
+
+.geoSvgContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform, opacity, filter;
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  path {
+    will-change: transform, opacity;
+  }
 }
 
 .geographyContent {
@@ -113,6 +132,10 @@
 
 // Desktop
 @media (min-width: 1025px) and (max-width: 1440px) {
+  .sixthBlock {
+    padding: 60px 50px;
+  }
+
   .locationContent .locationName {
     font-size: 50px !important; // 48px - 8px
     margin-bottom: 52px !important;
@@ -137,6 +160,10 @@
 
 // Small Desktop
 @media (min-width: 769px) and (max-width: 1024px) {
+  .sixthBlock {
+    padding: 50px 40px;
+  }
+
   .locationContent .locationName {
     font-size: 42px !important; // 48px - 16px
     margin-bottom: 62px !important;
@@ -156,6 +183,13 @@
   .pointIcon {
     width: 107px !important; // 157px - 30px
     height: 181px !important; // 231px - 30px
+  }
+}
+
+// Tablet
+@media (min-width: 481px) and (max-width: 768px) {
+  .sixthBlock {
+    padding: 40px 30px;
   }
 }
 
@@ -184,9 +218,9 @@
 // }
 
 // Mobile
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .sixthBlock {
-    padding: 20px 15px !important;
+    padding: 40px 30px;
   }
   
   .locationContent .locationName {

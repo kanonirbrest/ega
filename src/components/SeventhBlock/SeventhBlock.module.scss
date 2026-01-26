@@ -1,28 +1,27 @@
 .seventhBlock {
   position: relative;
   width: 100%;
-  // aspect-ratio: 1920 / 1455;
   background: #EFF1F4;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 100px 70px 40px 70px;
+  padding: 70px 100px 130px 70px;
 }
 
 .title {
   font-family: Questrial;
   font-weight: 400;
   font-style: Regular;
-  font-size: 53px;
+  font-size: clamp(20px, 2.5vw, 40px);
   line-height: 100%;
-  letter-spacing: 0%;
+  letter-spacing: 10%;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 1);
-  margin: 0 0 40px 0;
+  color: rgba(149, 151, 152, 1);
+  margin: clamp(40px, 8.6vw, 165px) 0 clamp(30px, 5.2vw, 100px) 0;
   padding: 0;
-  align-self: flex-start;
-  margin-bottom: 94px;
+  align-self: center;
+  text-align: center;
   will-change: transform, opacity;
 }
 
@@ -42,51 +41,88 @@
   }
 }
 
-.jurisdictionsList {
-  margin-top: 58px;
+.jurisdictionsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.regionColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.regionTitle {
   font-family: Questrial;
   font-weight: 400;
   font-style: Regular;
-  font-size: 35px;
-  line-height: 40px;
+  font-size: clamp(18px, 2.5vw, 40px);
+  line-height: clamp(18px, 2.5vw, 40px);
   letter-spacing: 5%;
-  text-align: right;
-  text-transform: capitalize;
-  color: rgba(0, 0, 0, 0.46);
-  margin-top: 40px;
+  text-transform: uppercase;
+  color: rgba(149, 151, 152, 1);
+  margin: 0 0 clamp(15px, 2.1vw, 40px) 0;
   padding: 0;
-  align-self: flex-end;
+}
+
+.countriesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    font-family: 'Questrial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(14px, 2vw, 32px);
+    line-height: clamp(20px, 3.1vw, 50px);
+    letter-spacing: 0.1em;
+    text-transform: capitalize;
+    color: #959798;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// Small Desktop
+@media (min-width: 769px) and (max-width: 1024px) {
+  .jurisdictionsContainer {
+    gap: clamp(15px, 2vw, 20px);
+  }
+}
+
+// Tablet
+@media (min-width: 481px) and (max-width: 768px) {
+  .jurisdictionsContainer {
+    gap: clamp(15px, 2vw, 20px);
+  }
 }
 
 // Mobile
 @media (max-width: 480px) {
   .seventhBlock {
-    padding: 20px 15px !important;
+    padding: 20px 15px;
   }
   
   .title {
-    font-size: 20px !important;
-    margin-bottom: 20px !important;
-    will-change: auto !important; // Убираем will-change на мобильных
+    margin: clamp(20px, 5vw, 40px) 0 clamp(15px, 3vw, 30px) 0;
+    will-change: auto !important;
   }
   
   .step7Icon {
-    will-change: auto !important; // Убираем will-change на мобильных
+    will-change: auto !important;
     
     :global(svg) {
-      will-change: auto !important; // Убираем will-change на мобильных
+      will-change: auto !important;
     }
   }
-  
-  .jurisdictionsList {
-    font-size: 14px !important;
-    line-height: 18px !important;
-    margin-top: 20px !important;
-    text-align: left !important;
-    
-    br {
-      display: none !important;
-    }
+
+  .jurisdictionsContainer {
+    gap: 15px;
   }
 }
 

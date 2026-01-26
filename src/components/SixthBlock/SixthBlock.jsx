@@ -1,249 +1,172 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './SixthBlock.module.scss'
-import pointSvg from '../../../assets/svg/step6/point.svg'
-import arrowLeftSvg from '../../../assets/svg/step6/arrowLeft.svg'
-import arrowRightSvg from '../../../assets/svg/step6/arrowRight.svg'
+import geoSvgUrl from '../../../assets/svg/geo.svg?url'
 
 gsap.registerPlugin(ScrollTrigger)
+
+// Глобальный кэш для предзагруженного SVG
+let svgCache = null
+let svgLoadPromise = null
+
+// Функция предзагрузки SVG
+function preloadSvg() {
+  if (svgLoadPromise) return svgLoadPromise
+  if (svgCache) return Promise.resolve(svgCache)
+  
+  svgLoadPromise = fetch(geoSvgUrl)
+    .then(response => response.text())
+    .then(text => {
+      svgCache = text
+      return text
+    })
+    .catch(error => {
+      console.error('Error preloading SVG:', error)
+      svgLoadPromise = null
+      throw error
+    })
+  
+  return svgLoadPromise
+}
+
+// Начинаем предзагрузку сразу при импорте модуля
+preloadSvg()
 
 function SixthBlock() {
   const blockRef = useRef(null)
   const titleRef = useRef(null)
-  const cyprusRef = useRef(null)
-  const uaeRef = useRef(null)
-  const centerRef = useRef(null)
-  const hongKongRef = useRef(null)
-  const chinaRef = useRef(null)
+  const svgRef = useRef(null)
+  const [svgText, setSvgText] = useState(svgCache)
+
+  // Если SVG еще не загружен, ждем загрузки
+  useEffect(() => {
+    if (svgCache) {
+      setSvgText(svgCache)
+      return
+    }
+    
+    preloadSvg().then(text => {
+      setSvgText(text)
+    })
+  }, [])
 
   useEffect(() => {
-    if (!blockRef.current) return
+    if (!blockRef.current || !titleRef.current || !svgRef.current || !svgText) return
 
     // Определяем мобильное устройство
     const isMobile = window.innerWidth <= 480
 
     const animations = []
 
+    // Вставляем SVG как inline
+    if (svgText && svgRef.current) {
+      svgRef.current.innerHTML = svgText
+    }
+
+    // Небольшая задержка для корректной инициализации
     const timer = setTimeout(() => {
-      // На мобильном отключаем все анимации
+      // Устанавливаем начальное состояние для заголовка
       if (isMobile) {
-        // Элементы просто отображаются без анимации
-        // Убеждаемся, что элементы видны
-        if (titleRef.current) {
-          gsap.set(titleRef.current, { opacity: 1, x: 0, y: 0 })
-        }
-        if (cyprusRef.current) {
-          gsap.set(cyprusRef.current, { opacity: 1, x: 0, y: 0 })
-        }
-        if (uaeRef.current) {
-          gsap.set(uaeRef.current, { opacity: 1, x: 0, y: 0 })
-        }
-        if (centerRef.current) {
-          gsap.set(centerRef.current, { opacity: 1, x: 0, y: 0, scale: 1 })
-        }
-        if (hongKongRef.current) {
-          gsap.set(hongKongRef.current, { opacity: 1, x: 0, y: 0 })
-        }
-        if (chinaRef.current) {
-          gsap.set(chinaRef.current, { opacity: 1, x: 0, y: 0 })
-        }
-        return
+        gsap.set(titleRef.current, { opacity: 0, y: 20 })
+      } else {
+        gsap.set(titleRef.current, { 
+          filter: "blur(10px)",
+          opacity: 0,
+          y: 30
+        })
       }
 
-      // Анимация для заголовка (только на десктопе)
-      if (titleRef.current) {
-        const anim = gsap.fromTo(titleRef.current,
-          {
+      // SVG контейнер видим сразу
+      gsap.set(svgRef.current, { opacity: 1 })
+
+      // Находим все path элементы внутри SVG (текст)
+      const svgElement = svgRef.current.querySelector('svg')
+      let textPaths = []
+      
+      if (svgElement) {
+        // Находим все path элементы с fill="white"
+        const allPaths = Array.from(svgElement.querySelectorAll('path[fill="white"]'))
+        
+        // Фильтруем только текстовые path (названия стран)
+        textPaths = allPaths.filter((path) => {
+          const d = path.getAttribute('d')
+          return d && d.length > 200
+        })
+        
+        if (textPaths.length > 0) {
+          // Устанавливаем начальное состояние для текстовых элементов
+          gsap.set(textPaths, {
             opacity: 0,
-            y: 30
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: blockRef.current,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse"
-            }
-          }
-        )
-        animations.push(anim)
+            scale: 0.9,
+            transformOrigin: "center center"
+          })
+        }
       }
 
-      // Анимация для Cyprus (первый элемент слева)
-      if (cyprusRef.current) {
-        const anim = gsap.fromTo(cyprusRef.current,
-          {
-            opacity: 0,
-            x: -50
+      // Создаем одну timeline с общим ScrollTrigger для синхронизации анимаций
+      // Для маленького блока используем "top 80%" - когда блок уже виден
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: blockRef.current,
+          start: "top 80%", // Для маленького блока запускаем когда он уже виден
+          toggleActions: "play none none none",
+          once: true,
+          ...(isMobile ? { 
+            invalidateOnRefresh: true,
+            anticipatePin: 0
+          } : {})
+        }
+      })
+
+      // Анимация заголовка
+      timeline.fromTo(titleRef.current,
+        {
+          opacity: 0,
+          y: isMobile ? 20 : 30,
+          ...(isMobile ? {} : { filter: "blur(10px)" })
+        },
+        {
+          opacity: 1,
+          y: 0,
+          ...(isMobile ? {} : { filter: "blur(0px)" }),
+          duration: isMobile ? 1.0 : 2.0,
+          ease: "power2.out"
+        },
+        0 // Начинаем одновременно
+      )
+
+      // Анимация текста SVG с небольшой задержкой после заголовка
+      if (textPaths.length > 0) {
+        timeline.to(textPaths, {
+          opacity: 1,
+          scale: 1,
+          duration: 1.0,
+          stagger: {
+            amount: 1.2,
+            from: "start",
+            ease: "power2.out"
           },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.6,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: blockRef.current,
-              start: "top 80%",
-              toggleActions: "play reverse play reverse"
-            }
-          }
-        )
-        animations.push(anim)
+          ease: "power2.out"
+        }, 0.3) // Начинаем через 0.3 секунды после начала анимации заголовка
       }
 
-      // На десктопе оставляем оригинальные анимации с задержками
-      // Анимация для центрального блока
-        if (centerRef.current) {
-          const anim = gsap.fromTo(centerRef.current,
-            {
-              opacity: 0,
-              scale: 0.8
-            },
-            {
-              opacity: 1,
-              scale: 1,
-              duration: 0.6,
-              delay: 0.2,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: blockRef.current,
-                start: "top 80%",
-                toggleActions: "play reverse play reverse"
-              }
-            }
-          )
-          animations.push(anim)
-        }
-
-        // Анимация для Hong Kong (первый элемент справа)
-        if (hongKongRef.current) {
-          const anim = gsap.fromTo(hongKongRef.current,
-            {
-              opacity: 0,
-              x: 50
-            },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.6,
-              delay: 0.4,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: blockRef.current,
-                start: "top 80%",
-                toggleActions: "play reverse play reverse"
-              }
-            }
-          )
-          animations.push(anim)
-        }
-
-        // Анимация для UAE (второй элемент слева)
-        if (uaeRef.current) {
-          const anim = gsap.fromTo(uaeRef.current,
-            {
-              opacity: 0,
-              x: -50
-            },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.6,
-              delay: 0.6,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: blockRef.current,
-                start: "top 80%",
-                toggleActions: "play reverse play reverse"
-              }
-            }
-          )
-          animations.push(anim)
-        }
-
-        // Анимация для China (второй элемент справа)
-        if (chinaRef.current) {
-          const anim = gsap.fromTo(chinaRef.current,
-            {
-              opacity: 0,
-              x: 50
-            },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.6,
-              delay: 0.8,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: blockRef.current,
-                start: "top 80%",
-                toggleActions: "play reverse play reverse"
-              }
-            }
-          )
-          animations.push(anim)
-        }
+      animations.push(timeline)
     }, 100)
 
     return () => {
       clearTimeout(timer)
-      // Убиваем только свои ScrollTrigger
       animations.forEach(anim => {
         if (anim?.scrollTrigger) anim.scrollTrigger.kill()
         anim?.kill()
       })
     }
-  }, [])
+  }, [svgText])
 
   return (
     <div ref={blockRef} id="geography" className={styles.sixthBlock}>
-      <h2 ref={titleRef} className={styles.geographyTitle}>GEOGRAPHY</h2>
-      
-      <div className={styles.geographyContent}>
-        <div className={styles.leftContent}>
-            <div className={styles.leftColumn}>
-            <div ref={cyprusRef} className={styles.locationItem}>
-              <div className={styles.locationContent}>
-                <div className={styles.locationName}>Cyprus</div>
-                <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} loading="lazy" />
-              </div>
-            </div>
-            
-            <div ref={uaeRef} className={styles.locationItem}>
-              <div className={styles.locationContent}>
-                <div className={styles.locationName}>UAE</div>
-                <img src={arrowLeftSvg} alt="Arrow left" className={styles.arrowLeft} loading="lazy" />
-              </div>
-            </div>
-          </div>
-
-          <div ref={centerRef} className={styles.centerColumn}>
-            <img src={pointSvg} alt="Location point" className={styles.pointIcon} loading="lazy" />
-            <div className={styles.ourOffices}>our offices</div>
-          </div>
-
-          <div className={styles.rightColumn}>
-            <div ref={hongKongRef} className={styles.locationItem}>
-              <div className={styles.locationContent}>
-                <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} loading="lazy" />
-                <div className={styles.locationName}>Hong Kong</div>
-              </div>
-            </div>
-            
-            <div ref={chinaRef} className={styles.locationItem}>
-              <div className={styles.locationContent}>
-                <img src={arrowRightSvg} alt="Arrow right" className={styles.arrowRight} loading="lazy" />
-                <div className={styles.locationName}>China</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
+      <h2 ref={titleRef} className={styles.geographyTitle}>OUR OFFICES</h2>
+      <div ref={svgRef} className={styles.geoSvgContainer}></div>
     </div>
   )
 }

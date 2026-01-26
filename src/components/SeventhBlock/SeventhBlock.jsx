@@ -136,14 +136,35 @@ function SeventhBlock() {
     }
   }, [svgText])
 
+  const jurisdictions = {
+    'NORTH AND SOUTH AMERICA': ['Costa Rica', 'Cayman Islands', 'British Virgin Islands', 'Brazil'],
+    'EUROPE': ['United Kingdom', 'Switzerland', 'Lithuania', 'Serbia', 'Cyprus', 'Turkey'],
+    'MIDDLE EAST': ['KSA', 'Oman', 'United Arab Emirates', 'Bahrain'],
+    'ASIA': ['Seychelles Islands', 'Marshal Islands', 'Singapore', 'Hong Kong', 'China', 'Indonesia', 'Saudi Arabia']
+  }
+
   return (
     <div ref={blockRef} className={styles.seventhBlock}>
-      <h2 ref={titleRef} className={styles.title}>Jurisdictions we are providing services:</h2>
       <div ref={svgRef} className={styles.step7Icon}></div>
-      <div className={styles.jurisdictionsList}>
-        Brazil, Cayman Islands, BVI, Costa Rica, Switzerland,<br/>
-        United Kingdom, Serbia, Armenia, Kazakhstan, Cyprus, UAE,<br/>
-        Hong Kong, China, Seychelles Islands, Marshal Islands.
+      <h2 ref={titleRef} className={styles.title}>JURISDICTIONS WE ARE PROVIDING SERVICES</h2>
+      <div className={styles.jurisdictionsContainer}>
+        {Object.entries(jurisdictions).map(([region, countries]) => {
+          const regionParts = region.split(' AND ')
+          const regionTitle = regionParts.length > 1 
+            ? <>{regionParts[0]} AND<br />{regionParts[1]}</>
+            : region
+          
+          return (
+            <div key={region} className={styles.regionColumn}>
+              <h3 className={styles.regionTitle}>{regionTitle}</h3>
+              <ul className={styles.countriesList}>
+                {countries.map((country, index) => (
+                  <li key={index}>{country}</li>
+                ))}
+              </ul>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
