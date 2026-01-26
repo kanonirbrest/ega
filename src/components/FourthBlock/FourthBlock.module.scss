@@ -1,21 +1,34 @@
 .fourthBlock {
   position: relative;
   width: 100%;
-  // aspect-ratio: 1923 / 968;
-  padding: 70px 70px 70px 70px;
+  padding: clamp(30px, 4.5vw, 70px) clamp(15px, 4.5vw, 73px);
   background: white;
   z-index: 10;
   
+  .valuesContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: clamp(25px, 3.2vw, 50px);
+  }
+
+  .valuesLeft {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 2.8vw, 44px);
+  }
+
   .valuesTitle {
     font-family: Questrial;
     font-weight: 400;
-    font-style: Regular;
-    font-size: 52px;
+    font-style: normal;
+    font-size: clamp(20px, 3.25vw, 52px);
     line-height: 100%;
     letter-spacing: 0%;
     text-transform: uppercase;
     color: rgba(15, 15, 16, 1);
     display: inline-block;
+    margin: 0;
     
     .char {
       display: inline-block;
@@ -24,237 +37,116 @@
     }
   }
 
-  .valuesContent {
+  .chipsContainer {
     display: flex;
     flex-direction: column;
-    gap: 81px;
-    margin-top: 135px;
+    gap: clamp(15px, 1.25vw, 20px);
+    align-items: start;
+  }
+
+  .chipsRow {
+    display: flex;
+    gap: clamp(7.2px, 0.94vw, 15px);
+    flex-wrap: wrap;
     
-    .row {
-      display: flex;
-      gap: 74px;
-      
-      .rowText {
-        font-family: Questrial;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 77px;
-        line-height: 100%;
-        letter-spacing: 0;
-        text-transform: uppercase;
-        color: rgba(15, 15, 16, 1);
-        display: inline-block;
-        
-        .char {
-          display: inline-block;
-          will-change: transform, opacity;
-        }
-      }
-    }
-
-    .rowStart {
-      justify-content: flex-start;
-    }
-
-    .rowCenter {
-      justify-content: center;
-    }
-
-    .rowEnd {
-      justify-content: flex-end;
+    .chip {
+      flex: 1;
+      min-width: 0;
     }
   }
 
-  .planetSvg {
-    width: auto;
+  .chip {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: clamp(1px, 0.125vw, 2px) solid #000000;
+    border-radius: clamp(40px, 4.375vw, 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(10px, 2.5vw, 40px) clamp(15px, 3.75vw, 60px);
+    font-family: Questrial;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(20px, 3.75vw, 60px);
+    line-height: 100%;
+    letter-spacing: 0.05em; // 5%
+    text-transform: uppercase;
+    color: rgba(15, 15, 16, 1);
+    will-change: transform, opacity;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      background-color: #000000;
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .valuesRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .globeImage {
+    width: clamp(120px, 15vw, 300px);
     height: auto;
     max-width: 100%;
     transform-origin: center center;
-  }
-
-  .arrowsSvg {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    transform-origin: center center;
-  }
-
-  .oneArrowSvg {
-    display: none;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    transform-origin: center center;
-  }
-}
-
-// Large Desktop
-@media (min-width: 1441px) and (max-width: 1800px) {
-  .fourthBlock .valuesContent .row.rowStart .rowText,
-  .fourthBlock .valuesContent .row.rowCenter .rowText,
-  .fourthBlock .valuesContent .row.rowEnd .rowText {
-    font-size: 77px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
-  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
-  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
-    transform: scale(1) !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowCenter .arrowsSvg {
-    display: block !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowCenter .oneArrowSvg {
-    display: none !important;
-  }
-}
-
-// Desktop
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .fourthBlock {
-    padding: 60px 60px 130px 60px !important;
-  }
-  
-  .fourthBlock .valuesContent {
-    gap: 69px !important;
-    margin-top: 115px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart,
-  .fourthBlock .valuesContent .row.rowCenter,
-  .fourthBlock .valuesContent .row.rowEnd {
-    gap: 63px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart .rowText,
-  .fourthBlock .valuesContent .row.rowCenter .rowText,
-  .fourthBlock .valuesContent .row.rowEnd .rowText {
-    font-size: 67px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
-  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
-  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
-    transform: scale(0.9) !important;
+    will-change: transform, opacity;
   }
 }
 
 // Small Desktop
 @media (min-width: 769px) and (max-width: 1024px) {
   .fourthBlock {
-    padding: 50px 50px 110px 50px !important;
-  }
-  
-  .fourthBlock .valuesContent {
-    gap: 57px !important;
-    margin-top: 95px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart,
-  .fourthBlock .valuesContent .row.rowCenter,
-  .fourthBlock .valuesContent .row.rowEnd {
-    gap: 52px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart .rowText,
-  .fourthBlock .valuesContent .row.rowCenter .rowText,
-  .fourthBlock .valuesContent .row.rowEnd .rowText {
-    font-size: 57px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
-  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
-  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
-    transform: scale(0.8) !important;
+    .chip {
+      white-space: normal;
+    }
+
+    .chipsRow {
+      flex-direction: column;
+    }
   }
 }
 
 // Tablet
 @media (min-width: 481px) and (max-width: 768px) {
   .fourthBlock {
-    padding: 40px 40px 90px 40px !important;
-  }
-  
-  .fourthBlock .valuesContent {
-    gap: 45px !important;
-    margin-top: 74px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart,
-  .fourthBlock .valuesContent .row.rowCenter,
-  .fourthBlock .valuesContent .row.rowEnd {
-    gap: 41px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart .rowText,
-  .fourthBlock .valuesContent .row.rowCenter .rowText,
-  .fourthBlock .valuesContent .row.rowEnd .rowText {
-    font-size: 47px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
-  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
-  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
-    transform: scale(0.7) !important;
+    .chip {
+      white-space: normal;
+    }
+
+    .chipsRow {
+      flex-direction: column;
+    }
   }
 }
 
 // Mobile
 @media (max-width: 480px) {
-  .valuesTitle {
-    font-size: 20px !important;
-    
-    .char {
-      will-change: auto !important; // Убираем will-change на мобильных
+  .fourthBlock {
+    .chip {
+      white-space: normal;
+      will-change: auto !important;
+    }
+
+    .chipsRow {
+      flex-direction: column;
+    }
+
+    .valuesTitle {
+      .char {
+        will-change: auto !important;
+      }
+    }
+
+    .globeImage {
+      will-change: auto !important;
     }
   }
-
-  .fourthBlock {
-    padding: 30px 15px 70px 15px !important;
-  }
-  
-  .fourthBlock .valuesContent .row .rowText .char {
-    will-change: auto !important; // Убираем will-change на мобильных
-  }
-  
-  .fourthBlock .valuesContent {
-    gap: 32px !important;
-    margin-top: 54px !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart,
-  .fourthBlock .valuesContent .row.rowCenter,
-  .fourthBlock .valuesContent .row.rowEnd {
-    gap: 15px !important;
-    align-items: center;
-    flex: 1;
-    justify-content: space-between;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart .rowText,
-  .fourthBlock .valuesContent .row.rowCenter .rowText,
-  .fourthBlock .valuesContent .row.rowEnd .rowText {
-    font-size: 25px !important;
-    align-items: center;
-  }
-  
-  .fourthBlock .valuesContent .row.rowStart img.planetSvg,
-  .fourthBlock .valuesContent .row.rowCenter img.planetSvg,
-  .fourthBlock .valuesContent .row.rowEnd img.planetSvg {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .fourthBlock .valuesContent .row.rowCenter .arrowsSvg {
-    display: none !important;
-  }
-  
-  .fourthBlock .valuesContent .row.rowCenter .oneArrowSvg {
-    display: block !important;
-    width: 40px;
-    height: 40px;
-  }
 }
-

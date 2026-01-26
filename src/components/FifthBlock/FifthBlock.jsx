@@ -22,10 +22,13 @@ function FifthBlock() {
       title: 'CORPORATE AND LEGAL SERVICES',
       image: image1,
       items: [
-        'corporate bank account opening individual bank account opening',
-        'compliance and AML assistance for ongoing international banking transaction',
-        'correspondent (loro) bank account opening for financial institutions',
-        'advisory on payment routes for international banking transactions'
+        'legal entities incorporation',
+        'legal entities liquidation',
+        'legal entities redomicilation',
+        'trusts and foundations incorporation and maintenance',
+        'legal advise, consulting and due diligence',
+        'ongoing legal assistance (drafting of agreements, resolutions etc)',
+        'assistance with obtaining regulated financial licensees'
       ]
     },
     {
@@ -33,12 +36,10 @@ function FifthBlock() {
       title: 'BANKING & TRANSACTION SERVICES',
       image: image2,
       items: [
-        'legal entity incorporation',
-        'legal entity liquidation',
-        'legal entity redomicilation',
-        'trust incorporation',
-        'legal advise, consulting and due diligence',
-        'ongoing legal assistance (drafting of agreements, resolutions etc)'
+        'corporate bank account opening individual bank account opening',
+        'compliance and aml assistance for ongoing international banking transactions',
+        'correspondent (loro) bank account opening for financial institutions',
+        'advisory on payment routes for international banking transactions'
       ]
     },
     {
@@ -49,7 +50,7 @@ function FifthBlock() {
         'statutory audit services',
         'consolidates audit services',
         'special purpose audit services',
-        'tax registration and submission',
+        'tax registrations and submissions',
         'tax consulting',
         'accounting and bookkeeping services',
         'transfer pricing',
