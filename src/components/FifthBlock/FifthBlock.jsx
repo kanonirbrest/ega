@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './FifthBlock.module.scss'
 import arrowRightSvg from '../../../assets/svg/arrowRight.svg'
-import image1 from '../../../assets/png/step5/1.png'
+import image1 from '../../../assets/png/step5/service1.png'
 import image2 from '../../../assets/png/step5/2.png'
 import image3 from '../../../assets/png/step5/3.png'
 
