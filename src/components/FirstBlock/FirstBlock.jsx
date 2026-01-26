@@ -22,6 +22,7 @@ function FirstBlock() {
       <div className={styles.smallLogoContainer}>
         <img src={smallLogo} alt="Small Logo" className={styles.smallLogo} loading="eager" />
         <nav className={styles.navMenu}>
+          <a href="#about-us" className={styles.navLink} onClick={(e) => handleNavClick(e, 'about-us')}>ABOUT US</a>
           <a href="#values" className={styles.navLink} onClick={(e) => handleNavClick(e, 'values')}>VALUES</a>
           <a href="#services" className={styles.navLink} onClick={(e) => handleNavClick(e, 'services')}>SERVICES</a>
           <a href="#geography" className={styles.navLink} onClick={(e) => handleNavClick(e, 'geography')}>GEOGRAPHY</a>

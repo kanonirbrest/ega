@@ -62,6 +62,22 @@
   }
 }
 
+@media (min-width: 1441px) and (max-width: 1800px){
+  .firstBlock {
+    .smallLogoContainer {
+
+      .navLink {
+        // font-size: 35px;
+        // line-height: 18px;
+      }
+      .navMenu {
+        width: auto;
+        gap: 30px;
+      }
+    }
+  }
+}
+
 @media (max-width: 1440px) {
   .firstBlock {
     padding: 0 52px 35px 52px;

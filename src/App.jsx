@@ -4,6 +4,7 @@ import FirstBlock from './components/FirstBlock/FirstBlock'
 import SecondBlock from './components/SecondBlock/SecondBlock'
 // Lazy load компоненты ниже первого экрана для оптимизации
 const ThirdBlock = lazy(() => import('./components/ThirdBlock/ThirdBlock'))
+const AboutUsBlock = lazy(() => import('./components/AboutUsBlock/AboutUsBlock'))
 const FourthBlock = lazy(() => import('./components/FourthBlock/FourthBlock'))
 const FifthBlock = lazy(() => import('./components/FifthBlock/FifthBlock'))
 const SixthBlock = lazy(() => import('./components/SixthBlock/SixthBlock'))
@@ -38,6 +39,7 @@ function App() {
       <SecondBlock />
       <Suspense fallback={null}>
         <ThirdBlock />
+        <AboutUsBlock />
         <FourthBlock />
         <FifthBlock />
         <SixthBlock />
