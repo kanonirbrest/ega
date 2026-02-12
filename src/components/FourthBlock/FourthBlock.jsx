@@ -153,9 +153,6 @@ function FourthBlock() {
             </div>
           </div>
         </div>
-        <div className={styles.valuesRight}>
-          <img ref={globeRef} src={globeImage} alt="Globe" className={styles.globeImage} loading="lazy" />
-        </div>
       </div>
     </div>
   )
