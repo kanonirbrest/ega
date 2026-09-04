@@ -138,9 +138,9 @@ function SeventhBlock() {
 
   const jurisdictions = {
     'NORTH AND SOUTH AMERICA': ['Costa Rica', 'Cayman Islands', 'British Virgin Islands', 'Brazil'],
-    'EUROPE': ['United Kingdom', 'Switzerland', 'Lithuania', 'Serbia', 'Cyprus', 'Turkey'],
-    'MIDDLE EAST': ['KSA', 'Oman', 'United Arab Emirates', 'Bahrain'],
-    'ASIA': ['Seychelles Islands', 'Marshal Islands', 'Singapore', 'Hong Kong', 'China', 'Indonesia', 'Saudi Arabia']
+    'EUROPE': ['United Kingdom', 'Switzerland', 'Lithuania', 'Serbia', 'Cyprus', 'Turkey', 'Armenia'],
+    'MIDDLE EAST': ['Kingdom of Saudi Arabia', 'Oman', 'United Arab Emirates', 'Bahrain'],
+    'ASIA': ['Seychelles Islands', 'Marshall Islands', 'Singapore', 'Hong Kong', 'China', 'Indonesia', 'Kazakhstan']
   }
 
   return (

@@ -97,7 +97,7 @@ function AboutUsBlock() {
         </div>
         <div className={styles.textBlock}>
           <p className={styles.aboutUsText}>
-            Since 2013, we have been providing corporate and private clients with highly precise, up‑to‑date solutions for corporate structuring and financial transaction support across more than 30 jurisdictions worldwide.
+            Since 2013, we have been providing corporate and private clients with highly precise, up‑to‑date solutions for corporate structuring and financial transaction support across more than 20 jurisdictions worldwide.
           </p>
         </div>
         <div className={styles.textBlock}>
